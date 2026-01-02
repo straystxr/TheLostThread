@@ -1,47 +1,96 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
-
 {
-    [SerializeField]private float moveSpeed = 5f;
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float turnSpeed = 1080f;
-    
-    
-    private Rigidbody myRigidbody;
-    private float xRotation = 0f;
 
-    private Vector3 direction;
+    [Header("References")]
+    [SerializeField] private Transform cameraTransform;
     
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float gravityScale = 1f; 
+
+
+
+    private Rigidbody myRigidbody;
+    private Vector3 moveDirection;
+    
+    public Vector3 Direction
+    {
+        get { return moveDirection; }
+    }
+
+    
+    private bool isGrounded;
+
+    private void OnCollisionStay(Collision collision)
+    {
+        isGrounded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
+
+    private void OnJump(InputValue value)
+    {
+        if (!isGrounded) return;
+
+        myRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody>();
         Cursor.visible = false;
     }
-    
 
     private void FixedUpdate()
     {
-        // Movement with velocity
-        Vector3 velocity = direction * moveSpeed;
+        // Stop if no input
+        if (moveDirection.magnitude <= 0.01f)
+        {
+            myRigidbody.linearVelocity = new Vector3(0f, myRigidbody.linearVelocity.y, 0f);
+            return;
+        }
+
+        // Movement
+        Vector3 velocity = moveDirection.normalized * moveSpeed;
         velocity.y = myRigidbody.linearVelocity.y;
         myRigidbody.linearVelocity = velocity;
-        myRigidbody.angularVelocity = Vector3.zero; // stops friction
-        
-        if (direction.magnitude <= Mathf.Epsilon) return; 
-        
-       var currentRotation = myRigidbody.rotation;
-       var targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
-       var rotation = Quaternion.RotateTowards(currentRotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
-           
-       myRigidbody.MoveRotation(rotation);
+
+        // Rotation
+        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        Quaternion smoothRotation = Quaternion.RotateTowards(
+            myRigidbody.rotation,
+            targetRotation,
+            turnSpeed * Time.fixedDeltaTime
+        );
+
+        myRigidbody.MoveRotation(smoothRotation);
     }
-    
+
     private void OnMove(InputValue value)
     {
-        var valueVector = value.Get<Vector2>();
-        direction = new Vector3(valueVector.x, 0, valueVector.y);
+        Vector2 input = value.Get<Vector2>();
+
+        // Camera-relative directions
+        Vector3 camForward = cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+
+        camForward.y = 0f;
+        camRight.y = 0f;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        moveDirection = camForward * input.y + camRight * input.x;
     }
 }
