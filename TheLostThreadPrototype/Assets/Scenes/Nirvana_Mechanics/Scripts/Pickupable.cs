@@ -16,6 +16,9 @@ public class Pickupable : MonoBehaviour
 
     public void Pickup(Transform target)
     {
+        //if its not a pickupable it will return not allowing it to pickup
+        if (!canPickUp) return;
+        //else it will be debug picked up
         Debug.Log("Picked up");
     }
 }
