@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class PickupInteraction : MonoBehaviour
+public class Pickupable : MonoBehaviour
 {
+    //checking whether object can be picked up by player which will be set as true for experimentation
+    [SerializeField]private bool canPickUp = true;
     //in this class we will have the collisions actually happening but no motion will occur
     private Rigidbody rb;
     
