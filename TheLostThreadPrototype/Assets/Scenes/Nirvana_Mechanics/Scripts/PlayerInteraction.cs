@@ -7,8 +7,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
     public class PlayerInteraction : MonoBehaviour
     {
         //variables 
-        [SerializeField] private Transform source;
-        [SerializeField] private float radiusOfInteraction = 1f;
+        [SerializeField] private Transform source; //source from where the object will be held
+        [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
         public void Interact(InputValue value)
         {
             Debug.Log("Interacting...");
