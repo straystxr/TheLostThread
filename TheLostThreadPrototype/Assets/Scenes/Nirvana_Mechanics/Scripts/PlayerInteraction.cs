@@ -8,9 +8,19 @@ namespace Scenes.Nirvana_Mechanics.Scripts
     {
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
-        [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
+        [SerializeField] private float radiusOfInteraction = 0.5f; //the radius of how far the object must be from the player
+        
+        //object being held
+        private Pickupable inHand;
         public void Interact(InputValue value)
         {
+            //If we're already holding an item/object there is no need to continue the method
+            if (inHand != null)
+            {
+                inHand.Drop();
+                inHand = null;
+                return;
+            }
             Debug.Log("Interacting...");
             //creating a variable of the source and its position
             var origin = source.position;
@@ -34,6 +44,18 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                     pickup.Pickup(transform);
                     return;
                 }
+                
+                var result = colliders[i]; //making the actual result readable
+                if (result.attachedRigidbody == null) continue; //breaks the loop 
+                
+                //Look for attached RigidBody 
+                if(!result.attachedRigidbody.TryGetComponent<Pickupable>(out var pickupable)) continue;
+                Debug.Log(result);
+                
+                //pick up object
+                inHand = pickupable; //lets the script know that an object is being held
+                pickupable.Pickup(source);
+                return; //breaks the function if an item was picked up
             }
             //in the case nothing it found
             Debug.Log("Object not found!");

@@ -26,7 +26,7 @@ public class Pickupable : MonoBehaviour
         //moving the object in accordance to the player/source
         rb.MovePosition(target.position);
         rb.MoveRotation(target.rotation);
-        Debug.Log($"Target position is " + target.position);
+        //Debug.Log($"Target position is " + target.position);
     }
 
     public void Pickup(Transform target)
@@ -39,5 +39,14 @@ public class Pickupable : MonoBehaviour
         transform.SetParent(target);
         //setting is kinematic to true to actual "manually" change the objects position
         rb.isKinematic = true;
+    }
+    
+    //Drop function
+    public void Drop()
+    {
+        //reverting all the changes basically
+        Debug.Log("Dropped");
+        transform.SetParent(null);
+        rb.isKinematic = false;
     }
 }
