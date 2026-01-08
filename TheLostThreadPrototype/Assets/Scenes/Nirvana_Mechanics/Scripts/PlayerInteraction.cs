@@ -33,6 +33,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             if (inHand != null)
             {
                 inHand.Drop();
+                inHand.rb.linearVelocity = transform.forward * 2f;
                 inHand = null;
                 return;
             }
@@ -55,24 +56,15 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                 //its null or not as the player will not be able to pick up all the objects within the game
                 if (pickup != null)
                 {
+                    //storing the object's data in hand
+                    inHand = pickup;
                     Debug.Log("Pickupable found!!");
-                    pickup.Pickup(transform);
-                    return;
+                    //the object will be held from the source aka hands
+                    pickup.Pickup(source);
+                    //return;
                 }
-                
-                var result = colliders[i]; //making the actual result readable
-                if (result.attachedRigidbody == null) continue; //breaks the loop 
-                
-                //Look for attached RigidBody 
-                if(!result.attachedRigidbody.TryGetComponent<Pickupable>(out var pickupable)) continue;
-                Debug.Log(result);
-                
-                //pick up object
-                inHand = pickupable; //lets the script know that an object is being held
-                pickupable.Pickup(source);
-                return; //breaks the function if an item was picked up
             }
-            //in the case nothing it found
+            //in the case nothing is found
             Debug.Log("Object not found!");
         
         
