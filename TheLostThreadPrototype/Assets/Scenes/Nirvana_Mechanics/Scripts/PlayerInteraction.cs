@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,12 +9,26 @@ namespace Scenes.Nirvana_Mechanics.Scripts
     {
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
-        [SerializeField] private float radiusOfInteraction = 0.5f; //the radius of how far the object must be from the player
+        [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
         
         //object being held
         private Pickupable inHand;
-        public void Interact(InputValue value)
+        private PlayerInput playerInput;
+
+        private void Awake()
         {
+            playerInput = GetComponent<PlayerInput>();
+        }
+
+        private void Start()
+        {
+            playerInput.ActivateInput();
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            //Started instead of Performed so it doesnt need to wait for a long time for the input as it did not take the response with Performed
+            if (context.phase != InputActionPhase.Started) return;
             //If we're already holding an item/object there is no need to continue the method
             if (inHand != null)
             {
@@ -25,7 +40,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //creating a variable of the source and its position
             var origin = source.position;
             //var rayCasting = new RaycastHit[4]; //results of raycasting
-            Collider[] colliders = new Collider[8];          // rename for clarity
+            Collider[] colliders = new Collider[8]; //going for collider instead of raycasting
             int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction,
                 colliders);
 
@@ -70,10 +85,10 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 
         //code does not work without Update() check with the sir
         //using the update to see if the 'E' button is being detected at all by the player input system
-        void Update()
+       /* void Update()
         {
             if(Keyboard.current.eKey.wasPressedThisFrame)
                 Interact(new InputValue());
-        }
+        } */
     }
 }

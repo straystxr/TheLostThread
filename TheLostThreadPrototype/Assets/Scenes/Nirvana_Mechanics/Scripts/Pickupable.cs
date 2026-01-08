@@ -39,6 +39,7 @@ public class Pickupable : MonoBehaviour
         transform.SetParent(target);
         //setting is kinematic to true to actual "manually" change the objects position
         rb.isKinematic = true;
+        //if (target) ;
     }
     
     //Drop function
