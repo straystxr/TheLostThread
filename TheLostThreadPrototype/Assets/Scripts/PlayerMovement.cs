@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float NormalSpeed = 5f;
+    [SerializeField] private float CarryingSpeed = 1.5f;
+    [SerializeField] private float DraggingSpeed = 2.5f;
     [SerializeField] private float turnSpeed = 1080f;
 
     [Header("References")]
@@ -13,9 +17,10 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float gravityScale = 1f; 
+    [SerializeField] private float gravityScale = 1f;
 
 
+    [SerializeField] private PlayerState state;
 
     private Rigidbody myRigidbody;
     private Vector3 moveDirection;
@@ -61,8 +66,50 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (state == PlayerState.Normal)
+            NormalState();
+    }
+
+    private void NormalState()
+    {
         // Movement
-        Vector3 velocity = moveDirection.normalized * moveSpeed;
+        Vector3 velocity = moveDirection.normalized * NormalSpeed;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
+
+        // Rotation
+        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        Quaternion smoothRotation = Quaternion.RotateTowards(
+            myRigidbody.rotation,
+            targetRotation,
+            turnSpeed * Time.fixedDeltaTime
+        );
+
+        myRigidbody.MoveRotation(smoothRotation);
+    }
+
+    private void CarryingState()
+    {
+        // Movement
+        Vector3 velocity = moveDirection.normalized * CarryingSpeed;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
+
+        // Rotation
+        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        Quaternion smoothRotation = Quaternion.RotateTowards(
+            myRigidbody.rotation,
+            targetRotation,
+            turnSpeed * Time.fixedDeltaTime
+        );
+
+        myRigidbody.MoveRotation(smoothRotation);
+    }
+
+    private void DraggingState()
+    {
+        // Movement
+        Vector3 velocity = moveDirection.normalized * DraggingSpeed;
         velocity.y = myRigidbody.linearVelocity.y;
         myRigidbody.linearVelocity = velocity;
 
@@ -94,3 +141,4 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = camForward * input.y + camRight * input.x;
     }
 }
+
