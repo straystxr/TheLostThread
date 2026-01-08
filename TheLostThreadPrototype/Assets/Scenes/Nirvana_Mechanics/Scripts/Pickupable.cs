@@ -3,7 +3,7 @@ using UnityEngine;
 
 //this is going to be used to set the object picked up as kinemtic or non kinematic
 [RequireComponent(typeof(Rigidbody))]
-public class Pickupable : MonoBehaviour
+public class Pickupable : MonoBehaviour, IInteractable
 {
     //checking whether object can be picked up by player which will be set as true for experimentation
     [SerializeField]private bool canPickUp = true;
@@ -29,7 +29,7 @@ public class Pickupable : MonoBehaviour
         //Debug.Log($"Target position is " + target.position);
     }
 
-    public void Pickup(Transform target)
+    public void Interact(Transform target)
     {
         //if its not a pickupable it will return not allowing it to pickup
         if (!canPickUp) return;
@@ -43,11 +43,13 @@ public class Pickupable : MonoBehaviour
     }
     
     //Drop function
-    public void Drop()
+    public void Release()
     {
         //reverting all the changes basically
         Debug.Log("Dropped");
         transform.SetParent(null);
         rb.isKinematic = false;
+        
+        rb.linearVelocity = transform.forward * 2f;
     }
 }

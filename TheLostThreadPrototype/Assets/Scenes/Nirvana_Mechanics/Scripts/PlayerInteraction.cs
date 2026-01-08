@@ -12,8 +12,11 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
         
         //object being held
-        private Pickupable inHand;
+        private IInteractable inHand;
         private PlayerInput playerInput;
+        
+        //draggable features
+        private Draggable draggingHand;
 
         private void Awake()
         {
@@ -32,8 +35,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //If we're already holding an item/object there is no need to continue the method
             if (inHand != null)
             {
-                inHand.Drop();
-                inHand.rb.linearVelocity = transform.forward * 2f;
+                inHand.Release();
                 inHand = null;
                 return;
             }
@@ -47,27 +49,23 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 
             //getting number of hits
             //var hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction, transform.forward, rayCasting);
+            //loop to recognize whether an item is pickupable or draggable
             for (int i = 0; i < hitCounts; i++)
             {
                 //trying to see if its hitting anything
                 Debug.Log("Hit: " + colliders[i].name);
-                Pickupable pickup = colliders[i].gameObject.GetComponent<Pickupable>();
-                //within the loop it will check whether a pickupable was detected and then we will check whether
-                //its null or not as the player will not be able to pick up all the objects within the game
-                if (pickup != null)
+                if (colliders[i].TryGetComponent(out IInteractable interactable))
                 {
                     //storing the object's data in hand
-                    inHand = pickup;
-                    Debug.Log("Pickupable found!!");
+                    inHand = interactable;
+                    Debug.Log($"{interactable.GetType().Name} found!!");
                     //the object will be held from the source aka hands
-                    pickup.Pickup(source);
-                    //return;
+                    interactable.Interact(source);
+                    return;
                 }
             }
             //in the case nothing is found
             Debug.Log("Object not found!");
-        
-        
         }
 
         private void OnDrawGizmos()

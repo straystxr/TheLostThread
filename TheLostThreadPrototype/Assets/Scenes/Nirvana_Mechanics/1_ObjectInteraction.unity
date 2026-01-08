@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 224209286}
   - component: {fileID: 224209285}
   - component: {fileID: 224209284}
+  - component: {fileID: 224209291}
   - component: {fileID: 224209289}
   - component: {fileID: 224209290}
   m_Layer: 0
@@ -272,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ccc321437f76cf4da207ac9c272baed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupAble
-  canPickUp: 1
+  canPickUp: 0
   rb: {fileID: 0}
 --- !u!114 &224209290
 MonoBehaviour:
@@ -289,6 +290,20 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.5490196, b: 0, a: 1}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &224209291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224209283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37df96c7a06bb064f9f14583c7e82b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Draggable
+  canBeDragged: 1
+  rb: {fileID: 0}
 --- !u!1 &262375474
 GameObject:
   m_ObjectHideFlags: 0
