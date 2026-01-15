@@ -1,6 +1,7 @@
+using System;
+using Scenes.Nirvana_Mechanics.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody myRigidbody;
     private Vector3 moveDirection;
+    private PlayerInteraction playerInteraction;
     
     public Vector3 Direction
     {
@@ -55,6 +57,38 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         Cursor.visible = false;
+        playerInteraction = GetComponent<PlayerInteraction>();
+    }
+
+    private void OnEnable()
+    {
+        playerInteraction.Interact += OnHandChanged;
+    }
+
+    private void OnDisable()
+    {
+        playerInteraction.Interact -= OnHandChanged;
+    }
+
+    private void OnHandChanged(IInteractable obj)
+    {
+        if (obj == null)
+        {
+            state = PlayerState.Normal;
+            return;
+        }
+
+        if (obj is Pickupable)
+        {
+            state = PlayerState.Carrying;
+            return;
+        }
+
+        if (obj is Draggable)
+        {
+            state = PlayerState.Dragging;
+            return;
+        }
     }
 
     private void FixedUpdate()
@@ -68,6 +102,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (state == PlayerState.Normal)
             NormalState();
+        
+        if (state == PlayerState.Carrying)
+            CarryingState();
+        
+        if (state == PlayerState.Dragging)
+            DraggingState();
     }
 
     private void NormalState()
@@ -112,21 +152,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 velocity = moveDirection.normalized * DraggingSpeed;
         velocity.y = myRigidbody.linearVelocity.y;
         myRigidbody.linearVelocity = velocity;
-
-        // Rotation
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-        Quaternion smoothRotation = Quaternion.RotateTowards(
-            myRigidbody.rotation,
-            targetRotation,
-            turnSpeed * Time.fixedDeltaTime
-        );
-
-        myRigidbody.MoveRotation(smoothRotation);
+        
     }
 
-    private void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 input = value.Get<Vector2>();
+        Vector2 input = context.ReadValue<Vector2>();
 
         // Camera-relative directions
         Vector3 camForward = cameraTransform.forward;

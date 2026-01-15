@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: e6282444e76a7084cba93c5389642700
+guid: eebf91b0d7884064abd5d88d3e31acb1
 ModelImporter:
-  serializedVersion: 24200
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: blackrat_body
-    second: {fileID: 2100000, guid: f9bd1a7eefe8f3a43959eaee706713df, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blackrat_eyes
-    second: {fileID: 2100000, guid: d5a9435975976ca41832fd6ecec40262, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blackrat_fur
-    second: {fileID: 2100000, guid: feb4c6fc9ec20b04bb01da206f5c8a8d, type: 2}
+      name: SM_TelPole_SM_TelPole1Mat
+    second: {fileID: 2100000, guid: 06ee8200dbe599c47b662212fe049a1b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -31,6 +21,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -41,7 +33,7 @@ ModelImporter:
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
-    animationWrapMode: 2
+    animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
@@ -53,7 +45,6 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -71,9 +62,6 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
-    generateMeshLods: 0
-    meshLodGenerationFlags: 0
-    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -109,11 +97,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
@@ -123,3 +111,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 287164
+  packageName: Optimized Ropes And Cables Tool
+  packageVersion: 1.2
+  assetPath: Assets/GogoGaga/OptimizedRopesAndCables/Example/Model/SM_TelPole_02.obj
+  uploadId: 683666
