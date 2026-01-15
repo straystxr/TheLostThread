@@ -3,7 +3,37 @@ guid: 4f791294428c0024fb3468dc05c79733
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Fishnet
+    second: {fileID: 2100000, guid: 06c692ec4c7c8b64fbcc2d4af8532a00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_PlasticPiece
+    second: {fileID: 2100000, guid: 4a9d396f3d02ae244a95ee021b1e7806, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_TrashPile
+    second: {fileID: 2100000, guid: ec904e3c6401ae6459829548c786287b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 4782972d85ab1c34788855b34b975ddf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: 4df1f5f898ef6c342a251788ad65de1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6
+    second: {fileID: 2100000, guid: 8a872037c9456d342a997a16d1fb7c72, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
