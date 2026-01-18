@@ -6,10 +6,13 @@ public class SewageWater : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Once the player hits the Sewage's collider it will die instantly
-        if (other.TryGetComponent<Health>(out var health))
+        Debug.Log("Trigger is working" +  other.gameObject.name);
+        Health health = other.GetComponent<Health>();
+        if (health != null)
         {
-            Debug.Log("Water detected");
+            Debug.Log("Water Detected");
             health.SewageDeath();
+            Debug.Log($"Health Detected: {health}");
         }
         
     }

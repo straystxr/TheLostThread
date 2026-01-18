@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    //this script will handle the player health only
+    //this script will handle the player health only and MUST BE attached to the Player
     
     //These two variables will be needed as player will regenerate health overtime unless the health hits 0
     [SerializeField] private float MaxHealth = 20;
@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
 
     public void SewageDeath()
     {
-        CurrentHealth = 0;
+        MaxHealth = 0;
         Death();
         //Send player back to check point code goes here!!!
     }
@@ -34,6 +34,15 @@ public class Health : MonoBehaviour
     public void Death()
     {
         fadeAnimator.SetTrigger("fadeInAnim");
-        //if(CurrentHealth == 0) Destroy(gameObject);
+        if (MaxHealth <= 0)
+        {
+            Invoke(nameof(SelfDestruct), 4f);
+        }
+    }
+
+    private void SelfDestruct()
+    {
+        //Destroying gameobjct to respawn it back to a different checkpoint
+        Destroy(gameObject);
     }
 }
