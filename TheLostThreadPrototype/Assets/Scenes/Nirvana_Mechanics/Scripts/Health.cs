@@ -17,11 +17,16 @@ public class Health : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    public void Damage(float dmgAmount)
+    public void RatDamage(float dmgAmount)
     {
         //health will always be decreased from the currentHealth variable
         CurrentHealth -= dmgAmount;
+        Debug.Log($"Damage inflicted: {dmgAmount}");
+        Debug.Log($"Current Health: {CurrentHealth}");
         if (CurrentHealth <= 0) Death();
+        
+        //need to set animation to showcase damage inflicted
+        
     }
 
     public void SewageDeath()
