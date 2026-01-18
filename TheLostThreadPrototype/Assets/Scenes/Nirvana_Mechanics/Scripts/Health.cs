@@ -1,20 +1,27 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     //this script will handle the player health only and MUST BE attached to the Player
     
-    //These two variables will be needed as player will regenerate health overtime unless the health hits 0
+    //These two variables will be needed as player will decrease health and need an upper boundary of a maxhealth
     [SerializeField] private float MaxHealth = 20;
     private float CurrentHealth;
     
     //Animator
     [SerializeField] public Animator fadeAnimator;
-
+    
     void Awake()
     {
         //Whenever the game is started we want the health to be at the maxHealth as the health will regen anyways
         CurrentHealth = MaxHealth;
+    }
+
+    void Update()
+    {
+        
     }
 
     public void RatDamage(float dmgAmount)
