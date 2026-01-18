@@ -61,7 +61,8 @@ public class Draggable : MonoBehaviour, IInteractable
         //setting the parent as the target parameter
         //transform.SetParent(target);
         //making sure Kinematic setting is off as we want the object to have physics on it
-        rb.isKinematic = false;
+        rb.isKinematic = true;
+        rb.transform.parent = target;
     }
     
     //Drop function
@@ -70,5 +71,7 @@ public class Draggable : MonoBehaviour, IInteractable
         //reverting all the changes basically
         Debug.Log("Dropped");
         player = null;
+        rb.isKinematic = false;
+        rb.transform.parent = null;
     }
 }

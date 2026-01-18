@@ -7,6 +7,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerInteraction : MonoBehaviour
     {
+        public event Action<IInteractable> Interact;
+        
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
         [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
@@ -37,13 +39,14 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             {
                 inHand.Release();
                 inHand = null;
+                Interact?.Invoke(inHand);
                 return;
             }
             Debug.Log("Interacting...");
             //creating a variable of the source and its position
             var origin = source.position;
             //var rayCasting = new RaycastHit[4]; //results of raycasting
-            Collider[] colliders = new Collider[8]; //going for collider instead of raycasting
+            Collider[] colliders = new Collider[32]; //going for collider instead of raycasting
             int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction,
                 colliders);
 
@@ -54,13 +57,14 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             {
                 //trying to see if its hitting anything
                 Debug.Log("Hit: " + colliders[i].name);
-                if (colliders[i].TryGetComponent(out IInteractable interactable))
+                if (colliders[i].attachedRigidbody && colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
                 {
                     //storing the object's data in hand
                     inHand = interactable;
                     Debug.Log($"{interactable.GetType().Name} found!!");
                     //the object will be held from the source aka hands
                     interactable.Interact(source);
+                    Interact?.Invoke(inHand);
                     return;
                 }
             }
