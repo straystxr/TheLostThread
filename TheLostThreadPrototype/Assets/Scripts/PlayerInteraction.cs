@@ -19,42 +19,6 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         //draggable features
         private Draggable draggingHand;
-        
-        //For static interactions
-        private IInteractable focusedInteractable;
-        
-        private void Update()
-        {
-            DetectFocus();
-        }
-
-        void DetectFocus()
-        {
-            var origin = source.position;
-            Collider[] colliders = new Collider[16];
-            int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction, colliders);
-
-            IInteractable found = null;
-
-            for (int i = 0; i < hitCounts; i++)
-            {
-                if (colliders[i].attachedRigidbody &&
-                    colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
-                {
-                    found = interactable;
-                    break;
-                }
-            }
-
-            if (found != focusedInteractable)
-            {
-                focusedInteractable?.OnUnfocus();
-                focusedInteractable = found;
-                focusedInteractable?.OnFocus();
-            }
-        }
-
-
 
         private void Awake()
         {
@@ -73,6 +37,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //If we're already holding an item/object there is no need to continue the method
             if (inHand != null)
             {
+                // Only release if the object supports Release
                 inHand.Release();
                 inHand = null;
                 Interact?.Invoke(inHand);
@@ -95,6 +60,9 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                 Debug.Log("Hit: " + colliders[i].name);
                 if (colliders[i].attachedRigidbody && colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
                 {
+                    // Ignore if we’re already interacting with it
+                    if (interactable == inHand) continue;
+                    
                     //storing the object's data in hand
                     inHand = interactable;
                     Debug.Log($"{interactable.GetType().Name} found!!");
@@ -121,6 +89,4 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                 Interact(new InputValue());
         } */
     }
-    
-    
 }

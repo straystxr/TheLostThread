@@ -12,6 +12,7 @@ public class AreaTrigger : MonoBehaviour
     {
         targetGroup = FindAnyObjectByType<CinemachineTargetGroup>();
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,4 +26,6 @@ public class AreaTrigger : MonoBehaviour
             targetGroup.AddMember(areaCollider.transform, 0.5f, 1f);
         }
     }
+    
+    
 }

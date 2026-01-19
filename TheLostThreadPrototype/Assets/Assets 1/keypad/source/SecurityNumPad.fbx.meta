@@ -3,7 +3,32 @@ guid: e27e4aac28bf4334e9872d7e3b368530
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackCaps
+    second: {fileID: 2100000, guid: 0204fcfa9e4593c408edda4fc33b9641, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 3ba21f1999af0f24c8ad994da0f5acaf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
+    second: {fileID: 2100000, guid: 28320eb4a5da39042a163dfe0a413a79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: 2e0c6bd6d59f9444e9e39e1f41beddef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteCaps
+    second: {fileID: 2100000, guid: decfd73d4fbfe7244a0fa07882b59f1f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
