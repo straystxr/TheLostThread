@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
         fadeAnimator.SetTrigger("fadeInAnim");
         if (MaxHealth <= 0)
         {
-            Invoke(nameof(SelfDestruct), 4f);
+            Invoke(nameof(SelfDestruct), 2f);
         }
     }
 

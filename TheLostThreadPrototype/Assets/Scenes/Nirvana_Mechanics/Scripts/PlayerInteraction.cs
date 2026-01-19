@@ -106,10 +106,10 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             Debug.Log("Object not found!");
         }
 
-        private void OnDrawGizmos()
+       /* private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(source.position, radiusOfInteraction);
-        }
+        }/*
 
         //code does not work without Update() check with the sir
         //using the update to see if the 'E' button is being detected at all by the player input system
