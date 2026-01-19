@@ -49,18 +49,11 @@ public class Pickupable : MonoBehaviour, IInteractable
         Debug.Log("Dropped");
         transform.SetParent(null);
         rb.isKinematic = false;
-<<<<<<< Updated upstream
         
-        rb.linearVelocity = transform.forward * 2f;
-    }
-=======
-
         rb.linearVelocity = transform.forward * 2f;
     }
 
     //Implementing a glow effect
     public void OnFocus() { }
     public void OnUnfocus() { }
-
->>>>>>> Stashed changes
 }

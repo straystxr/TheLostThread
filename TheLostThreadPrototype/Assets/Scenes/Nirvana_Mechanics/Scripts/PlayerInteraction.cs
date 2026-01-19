@@ -19,9 +19,6 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         //draggable features
         private Draggable draggingHand;
-<<<<<<< Updated upstream
-=======
-        
         //For static interactions
         private IInteractable focusedInteractable;
         
@@ -56,8 +53,6 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             }
         }
 
-
->>>>>>> Stashed changes
 
         private void Awake()
         {
@@ -124,9 +119,4 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                 Interact(new InputValue());
         } */
     }
-<<<<<<< Updated upstream
-=======
-    
-    
->>>>>>> Stashed changes
 }
