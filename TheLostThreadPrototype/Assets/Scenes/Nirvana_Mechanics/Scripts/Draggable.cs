@@ -74,4 +74,12 @@ public class Draggable : MonoBehaviour, IInteractable
         rb.isKinematic = false;
         rb.transform.parent = null;
     }
+<<<<<<< Updated upstream
+=======
+    
+    // Implementing a glow effect
+    public void OnFocus() { }
+    public void OnUnfocus() { }
+
+>>>>>>> Stashed changes
 }
