@@ -10,17 +10,69 @@ public class MagnetForce : MonoBehaviour
     
     public float ForceStrength => forceStrength;
     
+    public Vector3 Velocity => attachedCollider && attachedCollider.attachedRigidbody
+        ? attachedCollider.attachedRigidbody.linearVelocity
+        : Vector3.zero;
+    
     // If we deactivate the collider, we return a zero, otherwise we send back how fast it's moving
+    
+   /* detached momentarily!!
     public Vector3 Velocity => attachedCollider 
         ? attachedCollider.attachedRigidbody.linearVelocity
         : Vector3.back;
+*/
+
     
     private Collider attachedCollider;
     
     private void Awake()
     {
         attachedCollider = GetComponent<Collider>();
+        if (attachedCollider != null)
+            attachedCollider.enabled = false;
     }
+    
+    private void Update()
+    {
+        // Toggle magnet on/off with E key
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Enable/disable the collider
+            attachedCollider.enabled = !attachedCollider.enabled;
+            Debug.Log("Magnet " + (attachedCollider.enabled ? "Activated" : "Deactivated"));
+
+            if (attachedCollider.enabled)
+            {
+                // Optional: prevent metal from being pushed out at start
+                Collider[] metals = Physics.OverlapCapsule(
+                    attachedCollider.bounds.center - Vector3.up * attachedCollider.bounds.extents.y,
+                    attachedCollider.bounds.center + Vector3.up * attachedCollider.bounds.extents.y,
+                    ((CapsuleCollider)attachedCollider).radius
+                );
+
+                foreach (Collider metal in metals)
+                {
+                    if (metal.CompareTag("Metal"))
+                    {
+                        Physics.IgnoreCollision(attachedCollider, metal, true);
+                    }
+                }
+            }
+        }
+    }
+
+    
+    /* disabled for the moment!!!
+     private void Update()
+     {
+         // Toggle magnet on/off with E key
+         if (Input.GetKeyDown(KeyCode.E))
+         {
+             attachedCollider.enabled = !attachedCollider.enabled;
+             Debug.Log("Magnet " + (attachedCollider.enabled ? "Activated" : "Deactivated"));
+         }
+     }
+     */
 }
 
 
