@@ -45,7 +45,7 @@ public class Draggable : MonoBehaviour, IInteractable
         }
 
         Vector3 force = (point - transform.position) * dragForce
-                        - rb.linearVelocity * wobbleForce;
+                        - rb.velocity * wobbleForce;
         rb.AddForce(force, ForceMode.Acceleration);
         
     }
@@ -61,7 +61,7 @@ public class Draggable : MonoBehaviour, IInteractable
         //setting the parent as the target parameter
         //transform.SetParent(target);
         //making sure Kinematic setting is off as we want the object to have physics on it
-        rb.isKinematic = true;
+        rb.isKinematic = false;
         rb.transform.parent = target;
     }
     
@@ -72,7 +72,7 @@ public class Draggable : MonoBehaviour, IInteractable
         Debug.Log("Dropped");
         player = null;
         rb.isKinematic = false;
-        rb.transform.parent = null;
+        //rb.transform.parent = null;
     }
 
     

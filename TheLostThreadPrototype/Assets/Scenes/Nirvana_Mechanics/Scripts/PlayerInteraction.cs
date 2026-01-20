@@ -11,6 +11,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
+        [SerializeField] private Transform hands;
         [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
         
         //object being held
@@ -97,7 +98,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                     inHand = interactable;
                     Debug.Log($"{interactable.GetType().Name} found!!");
                     //the object will be held from the source aka hands
-                    interactable.Interact(source);
+                    interactable.Interact(hands);
                     Interact?.Invoke(inHand);
                     return;
                 }
