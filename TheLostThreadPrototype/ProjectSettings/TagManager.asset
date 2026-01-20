@@ -13,9 +13,9 @@ TagManager:
   - UI
   - KeypadButton
   - Area
-  - 
-  - 
-  - 
+  - Interactable
+  - Bolt
+  - VentTransport
   - 
   - 
   - 

@@ -34,6 +34,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         {
             //Started instead of Performed so it doesnt need to wait for a long time for the input as it did not take the response with Performed
             if (context.phase != InputActionPhase.Started) return;
+            
+            
             //If we're already holding an item/object there is no need to continue the method
             if (inHand != null)
             {
@@ -46,6 +48,9 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             Debug.Log("Interacting...");
             //creating a variable of the source and its position
             var origin = source.position;
+            
+            LayerMask interactableMask = ~LayerMask.GetMask("VentTransport"); // ignore transport triggers
+
             //var rayCasting = new RaycastHit[4]; //results of raycasting
             Collider[] colliders = new Collider[32]; //going for collider instead of raycasting
             int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction,
@@ -75,6 +80,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //in the case nothing is found
             Debug.Log("Object not found!");
         }
+        
+        
 
         private void OnDrawGizmos()
         {
