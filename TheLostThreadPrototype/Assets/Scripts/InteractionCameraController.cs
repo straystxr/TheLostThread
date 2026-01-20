@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionCameraController : MonoBehaviour
 {
     public Camera mainCamera;
-    public Transform focusPoint; // point to look at
+    public Transform focusPoint; 
     public float zoomSpeed = 5f;
 
     private Vector3 originalPosition;

@@ -30,7 +30,7 @@ public class KeypadButton : MonoBehaviour
 
         keypad.PressButton(digit);
     }
-
+    
     IEnumerator PressAnim()
     {
         Vector3 pressedPos = startPos - transform.up * pressDepth;
