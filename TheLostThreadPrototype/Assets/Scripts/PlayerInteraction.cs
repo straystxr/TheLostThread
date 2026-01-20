@@ -20,41 +20,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         //draggable features
         private Draggable draggingHand;
-        //For static interactions
-        private IInteractable focusedInteractable;
         
-        private void Update()
-        {
-            DetectFocus();
-        }
-
-        void DetectFocus()
-        {
-            var origin = source.position;
-            Collider[] colliders = new Collider[16];
-            int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction, colliders);
-
-            IInteractable found = null;
-
-            for (int i = 0; i < hitCounts; i++)
-            {
-                if (colliders[i].attachedRigidbody &&
-                    colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
-                {
-                    found = interactable;
-                    break;
-                }
-            }
-
-            if (found != focusedInteractable)
-            {
-                focusedInteractable?.OnUnfocus();
-                focusedInteractable = found;
-                focusedInteractable?.OnFocus();
-            }
-        }
-
-
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();

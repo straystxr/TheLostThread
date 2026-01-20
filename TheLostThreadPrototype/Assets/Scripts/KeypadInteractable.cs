@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 using TMPro;
-using UnityEngine.InputSystem; // <-- new input system
+using UnityEngine.InputSystem; 
 
 public class KeypadInteractable : MonoBehaviour, IInteractable
 {

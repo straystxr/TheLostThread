@@ -1647,20 +1647,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 18.825686, y: 18.825638, z: 23.609932}
   m_Center: {x: 0, y: 0.000030517578, z: 0}
---- !u!114 &50027459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: Player/Cancel
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: d44c53c1-84f1-4303-bcfe-0a374142029f
 --- !u!1 &56141911 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8159756617439880129, guid: 7a134c361d65cdd459f529c1d63723d5, type: 3}
@@ -2972,6 +2958,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.345216, y: 2404.628, z: 2.9505699}
   m_Center: {x: -0.0009765625, y: 0.00048828125, z: 0}
+--- !u!114 &124645782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Cancel
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: d44c53c1-84f1-4303-bcfe-0a374142029f
 --- !u!1 &127004821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,8 +3954,8 @@ MonoBehaviour:
   - {fileID: 735987349}
   - {fileID: 1367890135}
   - {fileID: 1085516562}
-  clickAction: {fileID: 594217879}
-  cancelAction: {fileID: 50027459}
+  clickAction: {fileID: 1807468468}
+  cancelAction: {fileID: 244225677}
   transport: {fileID: 550397648}
 --- !u!1 &160947458 stripped
 GameObject:
@@ -10144,7 +10144,7 @@ Transform:
   m_GameObject: {fileID: 238217175}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000000050962035, y: 0.9861435, z: -0.1658946, w: -0.000000030293865}
-  m_LocalPosition: {x: 0.80395, y: -0.031158328, z: 4.9745507}
+  m_LocalPosition: {x: 0.80395, y: -0.031189322, z: 4.9744616}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10267,7 +10267,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1019.1
-  field of view: 60.00152
+  field of view: 60.001377
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -10285,6 +10285,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &244225677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Cancel
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: d44c53c1-84f1-4303-bcfe-0a374142029f
 --- !u!1 &249045343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4831566390105139597, guid: 7a134c361d65cdd459f529c1d63723d5, type: 3}
@@ -11872,8 +11886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -13793,20 +13807,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 60.269173, y: 60.268795, z: 7.9599223}
   m_Center: {x: -0.00048828125, y: 0, z: -0.00048828125}
---- !u!114 &464604201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: Player/VentInteract
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: 0c58e1ac-d71f-47f2-972f-876ec2dab3d4
 --- !u!1 &465175418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9033801733547496210, guid: 7a134c361d65cdd459f529c1d63723d5, type: 3}
@@ -14114,7 +14114,7 @@ Transform:
   m_GameObject: {fileID: 488700148}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5019999, y: -0.125289, z: -2.3919997}
+  m_LocalPosition: {x: -2.44, y: -0.125289, z: -2.3919997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15073,7 +15073,7 @@ MonoBehaviour:
   player: {fileID: 1411135258}
   exitPoint: {fileID: 1804436082}
   arrowUI: {fileID: 2027201030}
-  interactAction: {fileID: 1197858328}
+  interactAction: {fileID: 1764794708}
 --- !u!1 &551298377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5415349777742370493, guid: 7a134c361d65cdd459f529c1d63723d5, type: 3}
@@ -15354,20 +15354,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.6279335, y: 10.628661, z: 46.357403}
   m_Center: {x: -0.0009765625, y: 0, z: 0}
---- !u!114 &594217879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: UI/Click
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
 --- !u!1 &596235853 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6104359339831055028, guid: 0e873f2985a782f4e8a037fd558f5cdb, type: 3}
@@ -29560,21 +29546,7 @@ MonoBehaviour:
   player: {fileID: 1411135258}
   exitPoint: {fileID: 1158988645}
   arrowUI: {fileID: 790499683}
-  interactAction: {fileID: 464604201}
---- !u!114 &1197858328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: Player/VentInteract
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: 0c58e1ac-d71f-47f2-972f-876ec2dab3d4
+  interactAction: {fileID: 1525919458}
 --- !u!1001 &1204377445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31037,20 +31009,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.020000005, y: 0.20200004, z: 0.020000027}
   m_Center: {x: -0.0000076293945, y: 0.091000006, z: 0.00000094553826}
---- !u!114 &1250834130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: Player/Cancel
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: d44c53c1-84f1-4303-bcfe-0a374142029f
 --- !u!1 &1252987705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7136247518039476700, guid: 7a134c361d65cdd459f529c1d63723d5, type: 3}
@@ -33504,7 +33462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scenes.Nirvana_Mechanics.Scripts.PlayerInteraction
   source: {fileID: 139176524}
-  radiusOfInteraction: -0.05
+  hands: {fileID: 139176524}
+  radiusOfInteraction: 1.5
 --- !u!114 &1411135260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36334,6 +36293,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524524532}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1525919458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/VentInteract
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 0c58e1ac-d71f-47f2-972f-876ec2dab3d4
 --- !u!1 &1527031219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1266694861656789492, guid: 7a134c361d65cdd459f529c1d63723d5, type: 3}
@@ -37422,12 +37395,12 @@ MonoBehaviour:
   player: {fileID: 1411135258}
   keypadRaycastCamera: {fileID: 238217180}
   screenText: {fileID: 1653301162}
-  correctCode: 1234
+  correctCode: 8155
   door: {fileID: 652467752}
   buttonSound: {fileID: 0}
   correctSound: {fileID: 0}
   wrongSound: {fileID: 0}
-  cancelAction: {fileID: 1250834130}
+  cancelAction: {fileID: 124645782}
   glowObject: {fileID: 0}
   pressEUI: {fileID: 459211104}
 --- !u!114 &1591243226
@@ -39176,6 +39149,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.576309, y: 13.173328, z: 9.680474}
   m_Center: {x: 0, y: 0.000030517578, z: 0}
+--- !u!114 &1764794708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/VentInteract
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 0c58e1ac-d71f-47f2-972f-876ec2dab3d4
 --- !u!4 &1767358380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2bf7f3ac27d63c54fa392094d6e899d4, type: 3}
@@ -39826,6 +39813,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.013498361, y: 0.020000005, z: 0.020000005}
   m_Center: {x: -0.037196334, y: -3.1784886e-15, z: -4.6565712e-10}
+--- !u!114 &1807468468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Click
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
 --- !u!1001 &1811848874
 PrefabInstance:
   m_ObjectHideFlags: 0

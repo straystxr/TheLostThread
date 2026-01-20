@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         // Stop if no input
         if (moveDirection.magnitude <= 0.01f)
         {
-            myRigidbody.velocity = new Vector3(0f, myRigidbody.velocity.y, 0f);
+            myRigidbody.linearVelocity = new Vector3(0f, myRigidbody.linearVelocity.y, 0f);
             return;
         }
 
@@ -114,8 +114,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Movement
         Vector3 velocity = moveDirection.normalized * NormalSpeed;
-        velocity.y = myRigidbody.velocity.y;
-        myRigidbody.velocity = velocity;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
 
         // Rotation
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -132,8 +132,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Movement
         Vector3 velocity = moveDirection.normalized * CarryingSpeed;
-        velocity.y = myRigidbody.velocity.y;
-        myRigidbody.velocity = velocity;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
 
         // Rotation
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -150,8 +150,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Movement
         Vector3 velocity = moveDirection.normalized * DraggingSpeed;
-        velocity.y = myRigidbody.velocity.y;
-        myRigidbody.velocity = velocity;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
         
     }
 

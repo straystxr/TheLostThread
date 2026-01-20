@@ -45,7 +45,7 @@ public class Draggable : MonoBehaviour, IInteractable
         }
 
         Vector3 force = (point - transform.position) * dragForce
-                        - rb.velocity * wobbleForce;
+                        - rb.linearVelocity * wobbleForce;
         rb.AddForce(force, ForceMode.Acceleration);
         
     }
