@@ -11,6 +11,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
+        [SerializeField] private Transform hands;
         [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
         
         //object being held
@@ -19,6 +20,40 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         //draggable features
         private Draggable draggingHand;
+        //For static interactions
+        private IInteractable focusedInteractable;
+        
+        private void Update()
+        {
+            DetectFocus();
+        }
+
+        void DetectFocus()
+        {
+            var origin = source.position;
+            Collider[] colliders = new Collider[16];
+            int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction, colliders);
+
+            IInteractable found = null;
+
+            for (int i = 0; i < hitCounts; i++)
+            {
+                if (colliders[i].attachedRigidbody &&
+                    colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
+                {
+                    found = interactable;
+                    break;
+                }
+            }
+
+            if (found != focusedInteractable)
+            {
+                focusedInteractable?.OnUnfocus();
+                focusedInteractable = found;
+                focusedInteractable?.OnFocus();
+            }
+        }
+
 
         private void Awake()
         {
@@ -72,7 +107,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                     inHand = interactable;
                     Debug.Log($"{interactable.GetType().Name} found!!");
                     //the object will be held from the source aka hands
-                    interactable.Interact(source);
+                    interactable.Interact(hands);
                     Interact?.Invoke(inHand);
                     return;
                 }
@@ -83,10 +118,10 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         
 
-        private void OnDrawGizmos()
+       /* private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(source.position, radiusOfInteraction);
-        }
+        }/*
 
         //code does not work without Update() check with the sir
         //using the update to see if the 'E' button is being detected at all by the player input system
