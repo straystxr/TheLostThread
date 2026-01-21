@@ -37,7 +37,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        isGrounded = true;
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (contact.normal.y > 0.5f)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -45,11 +52,16 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
     }
 
-    private void OnJump(InputValue value)
+
+    public void OnJump(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
         if (!isGrounded) return;
 
         myRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        
+        Debug.Log("Jump pressed. Grounded: " + isGrounded);
+
     }
 
 

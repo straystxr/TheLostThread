@@ -18,11 +18,7 @@ public class Health : MonoBehaviour
         //Whenever the game is started we want the health to be at the maxHealth as the health will regen anyways
         CurrentHealth = MaxHealth;
     }
-
-    void Update()
-    {
-        
-    }
+    
 
     public void RatDamage(float dmgAmount)
     {
