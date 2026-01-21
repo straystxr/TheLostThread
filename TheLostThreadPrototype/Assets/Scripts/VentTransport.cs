@@ -11,6 +11,12 @@ public class VentTransport : MonoBehaviour
 
     [Header("Input")]
     public InputActionReference interactAction; // assign T
+    
+    [Header("Dependencies")]
+    public VentInteractable vent; // drag the VentInteractable here
+
+    private bool ventIsOpen => vent != null && vent.IsOpen(); // add this helper
+
 
     private bool playerInside;
     private bool canTeleport = true;
@@ -40,14 +46,19 @@ public class VentTransport : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         playerInside = true;
         canTeleport = true;
-        if (arrowUI) arrowUI.SetActive(true);
+
+        // Only show arrow if vent is open
+        if (arrowUI && ventIsOpen)
+            arrowUI.SetActive(true);
     }
+
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         playerInside = false;
         canTeleport = true;
+        
         if (arrowUI) arrowUI.SetActive(false);
     }
 
@@ -55,12 +66,13 @@ public class VentTransport : MonoBehaviour
     {
         if (!playerInside) return;
 
-        if (interactAction.action.triggered && canTeleport)
+        if (interactAction.action.triggered && canTeleport && ventIsOpen)
         {
-            canTeleport = false; // prevent back-and-forth
+            canTeleport = false; // prevent instant back-and-forth
             StartCoroutine(TeleportWithFade());
         }
     }
+
 
     private IEnumerator TeleportWithFade()
     {
@@ -86,7 +98,8 @@ public class VentTransport : MonoBehaviour
 
     public void EnableTransport()
     {
-        if (arrowUI)
+        if (arrowUI && playerInside && ventIsOpen)
             arrowUI.SetActive(true);
     }
+
 }

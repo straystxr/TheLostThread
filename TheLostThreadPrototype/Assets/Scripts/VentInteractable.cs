@@ -22,6 +22,11 @@ public class VentInteractable : MonoBehaviour, IInteractable
     [Header("Next Step")]
     public VentTransport transport; // DRAG THIS
    
+    public bool IsOpen()
+    {
+        return isOpen; // returns true if all bolts removed
+    }
+
     
     private bool ventOpened = false;
     private bool isInteracting;

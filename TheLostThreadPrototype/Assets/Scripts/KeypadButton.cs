@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KeypadButton : MonoBehaviour
 {
@@ -14,23 +15,48 @@ public class KeypadButton : MonoBehaviour
     private Vector3 startPos;
     private bool isPressed;
 
+    private Camera cam;
+    private Collider col;
+
     private void Awake()
     {
         startPos = transform.localPosition;
+        col = GetComponent<Collider>();
     }
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
+
+    private void Update()
+    {
+        if (!Mouse.current.leftButton.wasPressedThisFrame) return;
+
+        if (cam == null)
+            cam = Camera.main;
+
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            KeypadButton button = hit.collider.GetComponent<KeypadButton>();
+            if (button != null)
+            {
+                button.Press();
+            }
+        }
+    }
+
 
     public void Press()
     {
         Debug.Log("Button clicked: " + digit);
-        
-        if (isPressed) return;
 
         isPressed = true;
         StartCoroutine(PressAnim());
-
         keypad.PressButton(digit);
     }
-    
+
     IEnumerator PressAnim()
     {
         Vector3 pressedPos = startPos - transform.up * pressDepth;
