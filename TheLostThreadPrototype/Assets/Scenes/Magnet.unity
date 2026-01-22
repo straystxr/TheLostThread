@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 231192951}
   m_Layer: 0
   m_Name: Electromagnet
-  m_TagString: Untagged
+  m_TagString: Sticky
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 231192949}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70655334, y: 0.027970864, z: 0.027970864, w: 0.70655334}
-  m_LocalPosition: {x: -3.875946, y: 3.4142852, z: 1.0149999}
+  m_LocalPosition: {x: -2.69, y: 0.01, z: 1.0149999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -366,7 +366,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -874,8 +874,8 @@ Transform:
   m_GameObject: {fileID: 459736743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: -0.41595, z: 3.5}
-  m_LocalScale: {x: 0.75251, y: 0.046444915, z: 0.75251}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.05, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 231192950}
@@ -887,7 +887,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459736743}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6f6292203414542728596dd5b61b685c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1660,8 +1660,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021289026}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.09, y: -0.116, z: 3.73}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.4768, y: 1.144, z: -2.4565597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2222,15 +2222,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d683ea6ddcd304fe293790e0561b6b0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.38679993
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d683ea6ddcd304fe293790e0561b6b0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d683ea6ddcd304fe293790e0561b6b0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.1865597
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d683ea6ddcd304fe293790e0561b6b0b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2447,7 +2447,7 @@ Transform:
   m_GameObject: {fileID: 1297449746}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: -0.36854, z: 3.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75251, y: 0.75251, z: 0.75251}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2639,7 +2639,7 @@ GameObject:
   - component: {fileID: 1325543247}
   - component: {fileID: 1325543248}
   m_Layer: 0
-  m_Name: Base
+  m_Name: ColliderBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2653,8 +2653,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325543246}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3859, y: 1.381, z: -6.254}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00090003014, y: 0.12100005, z: -0.06744051}
   m_LocalScale: {x: 1.4699999, y: 1.6202269, z: 1.4462247}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3122,7 +3122,7 @@ GameObject:
   - component: {fileID: 1556535725}
   - component: {fileID: 1556535726}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ColliderTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3137,7 +3137,7 @@ Transform:
   m_GameObject: {fileID: 1556535724}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.382, y: 1.513, z: -6.177}
+  m_LocalPosition: {x: -0.0048000813, y: 0.25300002, z: 0.009559631}
   m_LocalScale: {x: 3.3, y: 1.0375, z: 1.7456249}
   m_ConstrainProportionsScale: 0
   m_Children: []

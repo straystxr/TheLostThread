@@ -8,6 +8,9 @@ public class MagnetTarget : MonoBehaviour
 
     private Rigidbody rb;
     private MagnetForce magnetForce;
+    
+    private Vector3 pullDirection;
+    private Vector3 stickyOffset;
 
     private void Awake()
     {
@@ -27,7 +30,7 @@ public class MagnetTarget : MonoBehaviour
         }
         
         // Direction = from the metal object → Electromagnet's center
-        Vector3 pullDirection = (magnetForce.transform.position - transform.position).normalized;
+        pullDirection = (magnetForce.transform.position - transform.position).normalized;
         
         rb.AddForce(pullDirection * magnetForce.ForceStrength, ForceMode.Force);
 
@@ -56,5 +59,12 @@ public class MagnetTarget : MonoBehaviour
             Debug.Log("I don't love you anymore :'(");
             magnetForce = null;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 0.1f); // center of the object
+        Gizmos.DrawLine(transform.position, pullDirection * 5f); // direction in which it's being pulled
     }
 }
