@@ -1,10 +1,10 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Scenes.Nirvana_Mechanics.Scripts
 {
-    [RequireComponent(typeof(PlayerInput))]
     public class PlayerInteraction : MonoBehaviour
     {
         public event Action<IInteractable> Interact;
@@ -23,7 +23,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         private void Awake()
         {
-            playerInput = GetComponent<PlayerInput>();
+            playerInput = PlayerInput.all.First();
         }
 
         private void Start()

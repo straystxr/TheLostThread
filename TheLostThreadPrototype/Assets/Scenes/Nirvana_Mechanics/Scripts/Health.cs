@@ -51,6 +51,7 @@ public class Health : MonoBehaviour
     private void SelfDestruct()
     {
         //Destroying gameobjct to respawn it back to a different checkpoint
-        Destroy(gameObject);
+        Debug.Log("DESTROYED");
+        Destroy(gameObject); // player should be moved to the closest checkpoint, not destroyed
     }
 }

@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MagnetForce : MonoBehaviour
 {
@@ -32,30 +33,26 @@ public class MagnetForce : MonoBehaviour
             attachedCollider.enabled = false;
     }
     
-    private void Update()
+    public void ToggleMagnet(InputAction.CallbackContext context)
     {
-        // Toggle magnet on/off with E key
-        if (Input.GetKeyDown(KeyCode.E))
+        // Enable/disable the collider
+        attachedCollider.enabled = !attachedCollider.enabled;
+        Debug.Log("Magnet " + (attachedCollider.enabled ? "Activated" : "Deactivated"));
+
+        if (attachedCollider.enabled)
         {
-            // Enable/disable the collider
-            attachedCollider.enabled = !attachedCollider.enabled;
-            Debug.Log("Magnet " + (attachedCollider.enabled ? "Activated" : "Deactivated"));
+            // Optional: prevent metal from being pushed out at start
+            Collider[] metals = Physics.OverlapCapsule(
+                attachedCollider.bounds.center - Vector3.up * attachedCollider.bounds.extents.y,
+                attachedCollider.bounds.center + Vector3.up * attachedCollider.bounds.extents.y,
+                ((CapsuleCollider)attachedCollider).radius
+            );
 
-            if (attachedCollider.enabled)
+            foreach (Collider metal in metals)
             {
-                // Optional: prevent metal from being pushed out at start
-                Collider[] metals = Physics.OverlapCapsule(
-                    attachedCollider.bounds.center - Vector3.up * attachedCollider.bounds.extents.y,
-                    attachedCollider.bounds.center + Vector3.up * attachedCollider.bounds.extents.y,
-                    ((CapsuleCollider)attachedCollider).radius
-                );
-
-                foreach (Collider metal in metals)
+                if (metal.CompareTag("Metal"))
                 {
-                    if (metal.CompareTag("Metal"))
-                    {
-                        Physics.IgnoreCollision(attachedCollider, metal, true);
-                    }
+                    Physics.IgnoreCollision(attachedCollider, metal, true);
                 }
             }
         }
