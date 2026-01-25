@@ -11,7 +11,9 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         public Plug currentPlug;
         //bool to check if its correct or not which will be automatically set to false 
         public bool isCorrect = false;
+        private bool isPlayerInRange = false;
 
+        /*
         private void OnTriggerEnter(Collider other)
         {
             //storing plug component within variable
@@ -21,10 +23,16 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             {
                 ConnectedPlug(plug);
             }
+        }*/
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag("Player")) isPlayerInRange =  true;
         }
 
         private void OnTriggerExit(Collider other)
         {
+            /*
             //storing plug component within variable
             Plug plug = other.GetComponent<Plug>();
             
@@ -32,7 +40,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             if (plug != null && plug == currentPlug)
             {
                 RemovePlug();
-            }
+            }*/ 
+            if(other.CompareTag("Player")) isPlayerInRange =  false;
         }
 
         public void ConnectedPlug(Plug plug)
@@ -82,6 +91,11 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         public void wrongPlug()
         {
             Debug.Log($"{name}: Wrong plug");
+        }
+        
+        public bool CanAcceptPlug()
+        {
+            return isPlayerInRange && currentPlug == null;
         }
     }
 }
