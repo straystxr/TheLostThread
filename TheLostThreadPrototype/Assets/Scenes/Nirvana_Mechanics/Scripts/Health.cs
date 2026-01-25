@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
         //fadeAnimator.SetTrigger("fadeInAnim");
         if (CurrentHealth <= 0)
         {
-            Invoke(nameof(SelfDestruct), 2f);
+            Invoke(nameof(RespawnPlayer), 2f);
         }
     }
 
@@ -53,5 +53,28 @@ public class Health : MonoBehaviour
         //Destroying gameobjct to respawn it back to a different checkpoint
         Debug.Log("DESTROYED");
         Destroy(gameObject); // player should be moved to the closest checkpoint, not destroyed
+    }
+
+    private void RespawnPlayer()
+    {
+        //setting up a variable to fetch the respawn point position and loading it
+        Vector3 respawnPosition = CheckpointManager.Instance.LoadPosition();
+
+        //condition: if respawn is not at origin aka Vector3.zero, respawn spawn will be set at last saved
+        //checkpoint
+        if (respawnPosition != Vector3.zero)
+        {
+            Debug.Log("Respawning player");
+            transform.position = respawnPosition;
+        }
+        else
+        {
+            //no checkpoint found
+            Debug.Log("Respawn position not found");
+            transform.position = Vector3.zero;
+        }
+        
+        //setting currentHealth back to maxHealth
+        CurrentHealth = MaxHealth;
     }
 }
