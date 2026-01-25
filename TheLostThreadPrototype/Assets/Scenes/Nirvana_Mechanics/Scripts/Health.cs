@@ -34,15 +34,15 @@ public class Health : MonoBehaviour
 
     public void SewageDeath()
     {
-        MaxHealth = 0;
+        CurrentHealth = 0;
         Death();
         //Send player back to check point code goes here!!!
     }
 
     public void Death()
     {
-        fadeAnimator.SetTrigger("fadeInAnim");
-        if (MaxHealth <= 0)
+        //fadeAnimator.SetTrigger("fadeInAnim");
+        if (CurrentHealth <= 0)
         {
             Invoke(nameof(SelfDestruct), 2f);
         }
