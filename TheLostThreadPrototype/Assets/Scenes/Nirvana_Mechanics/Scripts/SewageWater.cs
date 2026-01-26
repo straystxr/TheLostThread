@@ -10,7 +10,7 @@ public class SewageWater : MonoBehaviour
         //Once the player hits the Sewage's collider it will die instantly
         Debug.Log("Trigger is working" +  other.gameObject.name);
         //calling the health script to get data and putting it in a variable called health
-        Health health = other.GetComponent<Health>();
+        Health health = other.GetComponentInParent<Health>();
         if (health != null)
         {
             Debug.Log("Water Detected");
