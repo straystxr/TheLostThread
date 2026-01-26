@@ -18,6 +18,12 @@ namespace GogoGaga.OptimizedRopesAndCables
 
         void Update()
         {
+            //if camera has no assigned poses, early return will fire
+            if (cameraPoses == null || cameraPoses.Length == 0) return;
+            
+            //clamping should be done before logic is fired
+            current = Mathf.Clamp(current, 0, cameraPoses.Length - 1);
+            
             transform.position = Vector3.Lerp(transform.position, cameraPoses[current].position, Time.deltaTime * speed);
             transform.rotation = Quaternion.Lerp(transform.rotation, cameraPoses[current].rotation, Time.deltaTime * speed);
 
@@ -33,8 +39,6 @@ namespace GogoGaga.OptimizedRopesAndCables
                 if (current == cameraPoses.Length)
                     current = 0;
             }
-
-            current = Mathf.Clamp(current, 0, cameraPoses.Length - 1);
         }
     }
 }
