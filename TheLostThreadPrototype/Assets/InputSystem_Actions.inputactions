@@ -1245,7 +1245,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Joystick",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false

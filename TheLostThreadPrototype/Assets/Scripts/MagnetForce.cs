@@ -33,29 +33,31 @@ public class MagnetForce : MonoBehaviour
             attachedCollider.enabled = false;
     }
     
+    
     public void ToggleMagnet(InputAction.CallbackContext context)
     {
-        // Enable/disable the collider
+        if (!context.started) return; // IMPORTANT: only toggle once per press
+
         attachedCollider.enabled = !attachedCollider.enabled;
         Debug.Log("Magnet " + (attachedCollider.enabled ? "Activated" : "Deactivated"));
+    }
 
-        if (attachedCollider.enabled)
-        {
-            // Optional: prevent metal from being pushed out at start
-            Collider[] metals = Physics.OverlapCapsule(
-                attachedCollider.bounds.center - Vector3.up * attachedCollider.bounds.extents.y,
-                attachedCollider.bounds.center + Vector3.up * attachedCollider.bounds.extents.y,
-                ((CapsuleCollider)attachedCollider).radius
-            );
 
-            foreach (Collider metal in metals)
-            {
-                if (metal.CompareTag("Metal"))
-                {
-                    Physics.IgnoreCollision(attachedCollider, metal, true);
-                }
-            }
-        }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!attachedCollider.enabled) return;
+        if (!other.CompareTag("Metal")) return;
+
+        Rigidbody rb = other.attachedRigidbody;
+        if (!rb) return;
+
+        Vector3 dir = (transform.position - other.transform.position).normalized;
+        rb.AddForce(dir * forceStrength, ForceMode.Force);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("MAGNET TRIGGER HIT: " + other.name);
     }
 
     
