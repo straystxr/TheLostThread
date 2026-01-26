@@ -25,4 +25,5 @@ public class CraneRotation : MonoBehaviour
     {
         input = context.ReadValue<float>();
     }
+    
 }
