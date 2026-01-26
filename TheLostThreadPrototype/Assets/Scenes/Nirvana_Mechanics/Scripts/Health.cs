@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
     public void SewageDeath()
     {
         CurrentHealth = 0;
+        Debug.Log("Health = " + CurrentHealth);
         Death();
         //Send player back to check point code goes here!!!
     }
