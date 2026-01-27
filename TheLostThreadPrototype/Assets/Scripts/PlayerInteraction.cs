@@ -57,9 +57,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             Collider[] colliders = new Collider[32]; //going for collider instead of raycasting
             int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction,
                 colliders);
-
-            //getting number of hits
-            //var hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction, transform.forward, rayCasting);
+            
             //loop to recognize whether an item is pickupable or draggable
             for (int i = 0; i < hitCounts; i++)
             {
@@ -98,21 +96,43 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //need to fire the function somewhere
             
             Debug.Log($"Snapped Position: {trans.position}");  
+            
+            //removing the physics of the plug as it will stay snapped to socket by making kinematic true
+            if(trans.TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
         }
         
+        //removing plug
+        private void RemovePlugFromSocket(Socket socket)
+        {
+            Plug plug = socket.currentPlug;
+            socket.RemovePlug();
+
+            //if its not a plug get interactable components and early return to not change anything
+            if (!plug.TryGetComponent(out IInteractable interactable)) return;
+
+            inHand = interactable;
+            heldPlug = plug;
+
+            interactable.Interact(hands);
+            Interact?.Invoke(inHand);
+        }
         
-
-       /* private void OnDrawGizmos()
+        //when E is fired if the object in hand is a plug this method will fire to check if there are
+        //any sockets nearby
+        private Socket socketsNearyby()
         {
-            Gizmos.DrawWireSphere(source.position, radiusOfInteraction);
-        }/*
+            Collider[] colliders = new Collider[16];
+            //checking w colliders whether object is an interactable and then checking if its a socket in loop
+            int hitCounts = Physics.OverlapSphereNonAlloc(source.position, radiusOfInteraction, colliders);
 
-        //code does not work without Update() check with the sir
-        //using the update to see if the 'E' button is being detected at all by the player input system
-       /* void Update()
-        {
-            if(Keyboard.current.eKey.wasPressedThisFrame)
-                Interact(new InputValue());
-        } */
+            for (int i = 0; i < hitCounts; i++)
+            {
+                //looping through sockets 
+                Socket socket = colliders[i].GetComponent<Socket>();
+                if (socket != null) return socket; //if socket alr has a plug it will fire an early return
+            }
+
+            return null;
+        }
     }
 }
