@@ -95,7 +95,13 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         
         public bool CanAcceptPlug()
         {
-            return isPlayerInRange && currentPlug == null;
+            //only will care for plug
+            return currentPlug == null;
+        }
+        
+        public bool CanRemovePlug()
+        {
+            return currentPlug != null;
         }
     }
 }

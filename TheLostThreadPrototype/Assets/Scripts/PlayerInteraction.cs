@@ -12,7 +12,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
         [SerializeField] private Transform hands;
-        [SerializeField] private float radiusOfInteraction = 1f; //the radius of how far the object must be from the player
+        [SerializeField] private float radiusOfInteraction = 5f; //the radius of how far the object must be from the player
         
         //object being held
         private IInteractable inHand;
@@ -34,17 +34,48 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 
         public void OnInteract(InputAction.CallbackContext context)
         {
+            Debug.Log($"[E] inHand={(inHand != null)}, heldPlug={(heldPlug != null)}");
             //Started instead of Performed so it doesnt need to wait for a long time for the input as it did not take the response with Performed
             if (context.phase != InputActionPhase.Started) return;
+
+            if (inHand != null && heldPlug != null)
+            {
+                Socket socket = socketsNearyby();
+                Debug.Log($"socket={(socket != null ? socket.name : "NULL")}");
+                if(socket != null)  Debug.Log($"{socket.CanAcceptPlug()}");
+                
+                if (socket != null && socket.CanAcceptPlug())
+                {
+                    //firing insert socket method and will only insert with those that have socket script
+                    insertSocket(socket);
+                    socket.ConnectedPlug(heldPlug);
+
+                    inHand.Release(); //removes isHeld to prevent it from still "holding" the plug
+                    
+                    //turning inhand and heldplug null
+                    inHand = null;
+                    heldPlug = null;
+
+                    Interact?.Invoke(null);
+                    return;
+                }
+            }
             
+            if (inHand == null)
+            {
+                Socket socket = socketsNearyby();
+                if (socket != null && socket.CanAcceptPlug())
+                {
+                    RemovePlugFromSocket(socket);
+                    return;
+                }
+            }
             
             //If we're already holding an item/object there is no need to continue the method
-            if (inHand != null)
+            if (inHand != null && heldPlug != null)
             {
                 // Only release if the object supports Release
-                inHand.Release();
-                inHand = null;
-                Interact?.Invoke(inHand);
+                Debug.Log("no valid socket... dropping");
                 return;
             }
             Debug.Log("Interacting...");
@@ -61,16 +92,28 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //loop to recognize whether an item is pickupable or draggable
             for (int i = 0; i < hitCounts; i++)
             {
+                
                 //trying to see if its hitting anything
                 Debug.Log("Hit: " + colliders[i].name);
                 if (colliders[i].attachedRigidbody && colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
                 {
-                    // Ignore if we’re already interacting with it
+                    //ignore if we’re already interacting with it
                     if (interactable == inHand) continue;
                     
                     //storing the object's data in hand
                     inHand = interactable;
                     Debug.Log($"{interactable.GetType().Name} found!!");
+                    
+                    //getting type plug
+                    heldPlug = colliders[i].attachedRigidbody.GetComponent<Plug>();
+
+                    //if plug is in socket == remove
+                    if (heldPlug != null && heldPlug.currentSocket != null)
+                    {
+                        heldPlug.currentSocket.RemovePlug();
+                    }
+
+                    
                     //the object will be held from the source aka hands
                     interactable.Interact(hands);
                     Interact?.Invoke(inHand);
@@ -86,14 +129,19 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         //if plug != correctSocket plug will not snap and will be removed
         private void insertSocket(Socket socket)
         {
-            //removing it from hand as the position will now be updated to snap to the wall
-            inHand.Release();
-            
+            Debug.Log("inserting socket...");
             //snapping the plugs with the socket
             Transform trans = heldPlug.transform;
+            
+            //removing parenting
+            trans.SetParent(null);
+            
+            //updating the position to the socket's pos
             trans.position = socket.transform.position;
             trans.rotation = socket.transform.rotation;
-            //need to fire the function somewhere
+            
+            //parenting the plug to the socker
+            trans.SetParent(socket.transform);
             
             Debug.Log($"Snapped Position: {trans.position}");  
             
@@ -107,12 +155,13 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             Plug plug = socket.currentPlug;
             socket.RemovePlug();
 
+            Debug.Log($"Removed Plug: {plug.GetType().Name}");
             //if its not a plug get interactable components and early return to not change anything
             if (!plug.TryGetComponent(out IInteractable interactable)) return;
 
             inHand = interactable;
             heldPlug = plug;
-
+            
             interactable.Interact(hands);
             Interact?.Invoke(inHand);
         }
@@ -121,15 +170,16 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         //any sockets nearby
         private Socket socketsNearyby()
         {
+            //checking colliders to ensure there are sockets nearby (sockets each have their colliders)
             Collider[] colliders = new Collider[16];
             //checking w colliders whether object is an interactable and then checking if its a socket in loop
             int hitCounts = Physics.OverlapSphereNonAlloc(source.position, radiusOfInteraction, colliders);
 
+            //similar as before just checking for sockets specifically through loop
             for (int i = 0; i < hitCounts; i++)
             {
-                //looping through sockets 
-                Socket socket = colliders[i].GetComponent<Socket>();
-                if (socket != null) return socket; //if socket alr has a plug it will fire an early return
+                Socket socket = colliders[i].GetComponentInParent<Socket>();
+                if (socket != null) return socket;
             }
 
             return null;
