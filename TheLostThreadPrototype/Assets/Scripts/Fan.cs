@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    //read only bool
-    private bool FanActive =>
-        PuzzleManager.Instance != null &&
-        PuzzleManager.Instance.allPlugsConnected;
-
-    
     [Header("PHYSICS")]
     [SerializeField] private float force = 40f;
     [SerializeField] private float gravityEnhancer = 0.5f;
@@ -17,6 +11,39 @@ public class Fan : MonoBehaviour
     
     [Header("VISUALS")]
     [SerializeField] private ParticleSystem fanParticles; //adding particle effects
+    //read only bool
+    private bool FanActive =>
+        PuzzleManager.Instance != null &&
+        PuzzleManager.Instance.allPlugsConnected;
+
+    private bool wasActive = false;
+
+    private void Update()
+    {
+        //setting conditions for when fan particles should turn on or off
+        if(FanActive && !wasActive) TurnFanOn();
+        else if(!FanActive && wasActive) TurnFanOff();
+        //reading fanactive
+        wasActive = FanActive;
+        
+        Debug.Log($"FanActive = {FanActive}");
+    }
+    
+    private void TurnFanOn()
+    {
+        Debug.Log("Fan visuals ON");
+
+        if (fanParticles != null && !fanParticles.isPlaying)
+            fanParticles.Play();
+    }
+
+    private void TurnFanOff()
+    {
+        Debug.Log("Fan visuals OFF");
+
+        if (fanParticles != null && fanParticles.isPlaying)
+            fanParticles.Stop();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -20,18 +20,20 @@ public class PuzzleManager : MonoBehaviour
     public void checkSockets()
     {
         //early return because we do not need to check if the puzzle is completed
-        if (puzzleCompleted) return;
+        //if (puzzleCompleted) return;
         
         int counter = 0;
         foreach (Socket socket in sockets)
         {
             if (socket.isCorrect) counter++;
         }
+        
+        bool solved = counter == sockets.Length;
+        allPlugsConnected = solved;
+        
         Debug.Log($"{name}: Correct plug count: {counter}");
-        if (counter == sockets.Length)
+        if (solved == !puzzleCompleted)
         {
-            //bool turns to true
-            allPlugsConnected = true;
             //method starts and coroutine fires
             completePuzzle();
         }
@@ -39,6 +41,7 @@ public class PuzzleManager : MonoBehaviour
     void completePuzzle()
     {
         puzzleCompleted = true;
+        allPlugsConnected = true;
         Debug.Log("Puzzle finished wooooooooo");
 
         StartCoroutine(FanOn());
