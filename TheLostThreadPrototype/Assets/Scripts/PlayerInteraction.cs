@@ -44,13 +44,13 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                 Debug.Log($"socket={(socket != null ? socket.name : "NULL")}");
                 if(socket != null)  Debug.Log($"{socket.CanAcceptPlug()}");
                 
-                if (socket != null && socket.CanAcceptPlug())
+                //inserting and checking condition
+                if (socket != null && socket.CanAcceptPlug() && heldPlug.plugorder == socket.order)
                 {
+                    inHand.Release(); //removes isHeld to prevent it from still "holding" the plug
                     //firing insert socket method and will only insert with those that have socket script
                     insertSocket(socket);
                     socket.ConnectedPlug(heldPlug);
-
-                    inHand.Release(); //removes isHeld to prevent it from still "holding" the plug
                     
                     //turning inhand and heldplug null
                     inHand = null;
@@ -76,6 +76,11 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             {
                 // Only release if the object supports Release
                 Debug.Log("no valid socket... dropping");
+                inHand.Release();   //drops it 
+                inHand = null; //making it null
+                heldPlug = null; //making it null
+
+                Interact?.Invoke(null);
                 return;
             }
             Debug.Log("Interacting...");
