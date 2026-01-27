@@ -26,7 +26,7 @@ public class Fan : MonoBehaviour
         //reading fanactive
         wasActive = FanActive;
         
-        Debug.Log($"FanActive = {FanActive}");
+        //Debug.Log($"FanActive = {FanActive}");
     }
     
     private void TurnFanOn()
