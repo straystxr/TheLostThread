@@ -3,6 +3,7 @@ using Scenes.Nirvana_Mechanics.Scripts;
 using UnityEngine;
 using Socket = System.Net.Sockets.Socket;
 
+//enum to define the order of the plug
 public enum PlugOrder
 {
     first,

@@ -17,6 +17,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         //object being held
         private IInteractable inHand;
         private PlayerInput playerInput;
+        private Plug heldPlug;
         
         //draggable features
         private Draggable draggingHand;
@@ -80,6 +81,23 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             }
             //in the case nothing is found
             Debug.Log("Object not found!");
+        }
+        
+        //adding inserting plugs + removing plugs interactions
+        //if plug == correctSocket plug will snap to the correct socket
+        //if plug != correctSocket plug will not snap and will be removed
+        private void insertSocket(Socket socket)
+        {
+            //removing it from hand as the position will now be updated to snap to the wall
+            inHand.Release();
+            
+            //snapping the plugs with the socket
+            Transform trans = heldPlug.transform;
+            trans.position = socket.transform.position;
+            trans.rotation = socket.transform.rotation;
+            //need to fire the function somewhere
+            
+            Debug.Log($"Snapped Position: {trans.position}");  
         }
         
         

@@ -9,13 +9,7 @@ namespace GogoGaga.OptimizedRopesAndCables
         public float speed = 15;
         public Transform[] cameraPoses;
         int current = 0;
-        void Start()
-        {
-
-        }
-
-
-
+        
         void Update()
         {
             //if camera has no assigned poses, early return will fire
