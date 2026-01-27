@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
+    [Header("PUZZLE MANAGER")]
     public static PuzzleManager Instance;
-
-    public Socket[] sockets;
+    public bool allPlugsConnected { get; private set; }
+    [SerializeField] private Socket[] sockets;
     bool puzzleCompleted = false;
 
 
@@ -27,7 +28,13 @@ public class PuzzleManager : MonoBehaviour
             if (socket.isCorrect) counter++;
         }
         Debug.Log($"{name}: Correct plug count: {counter}");
-        if (counter == sockets.Length) completePuzzle();
+        if (counter == sockets.Length)
+        {
+            //bool turns to true
+            allPlugsConnected = true;
+            //method starts and coroutine fires
+            completePuzzle();
+        }
     }
     void completePuzzle()
     {
@@ -41,7 +48,5 @@ public class PuzzleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Debug.Log("Sparks on");
-        
-        
     }
 }
