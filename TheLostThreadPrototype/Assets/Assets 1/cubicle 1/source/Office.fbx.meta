@@ -1,0 +1,800 @@
+fileFormatVersion: 2
+guid: 23d23243480f00c4e8072dfd033b69a4
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2 Door Filing Container
+    second: {fileID: 2100000, guid: e6afd18c4ed85f14d90af702c2496565, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 4 Door Filing Container
+    second: {fileID: 2100000, guid: 5cbc9020839d9884fbbddf3facd0079f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Aglaonema Leaf
+    second: {fileID: 2100000, guid: bd93cbe773d519045838e1f39886deb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Astro Lounge CD
+    second: {fileID: 2100000, guid: 6280b1450186c344c83e7f9afb332461, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bag
+    second: {fileID: 2100000, guid: a4258a6c5e29818419f82bef1bfa6fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Binders
+    second: {fileID: 2100000, guid: 3a3f6ba6d4180984b98e3b6ad3bb45b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blade Runner Poster
+    second: {fileID: 2100000, guid: f9d13cb6d9710c04a8ff9a3d6e7ecd0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blank Floppy Disk
+    second: {fileID: 2100000, guid: 4fc77cdddc9e30e43939da8943395eb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Burger
+    second: {fileID: 2100000, guid: 89e8de2e48f01f74e82f1258d5b5a650, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Business Card 1
+    second: {fileID: 2100000, guid: 29708a147eebe6f468009bebc7989685, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CD
+    second: {fileID: 2100000, guid: 4c1b78b966d1c214480688bbf1cd5830, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CD Case
+    second: {fileID: 2100000, guid: 6c61856a9daab6141bfffbbe8e921c97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Calculator
+    second: {fileID: 2100000, guid: 11184f5b7a2379f4d93099b35bb76230, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clipboard
+    second: {fileID: 2100000, guid: 7bf470c2b6aab5241b4b7a9b45ae4cc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coffee Cup
+    second: {fileID: 2100000, guid: 52c2f29c4e8e7d44ab9cd96c3462f562, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Corkboard
+    second: {fileID: 2100000, guid: d679f950059c04043a8d7f6a0e5ac55d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cubicle Trim
+    second: {fileID: 2100000, guid: b8b2cef200a676340af97bd15886560f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cubicle Wall
+    second: {fileID: 2100000, guid: 7d002869c38ad2d4a891b04f9187b7db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Definitely Maybe CD
+    second: {fileID: 2100000, guid: bea884d98f9533c409924903bd0bb7a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desk
+    second: {fileID: 2100000, guid: 891e008118329fd40b620a9240c02c40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desk Legs
+    second: {fileID: 2100000, guid: 26a437eaf3fbc0547ba2bb4174117ea4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Doom Floppy Disk
+    second: {fileID: 2100000, guid: f051cf36e5a20da46a2b6a7ea741fb67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FF7 Poster 256x256
+    second: {fileID: 2100000, guid: 730e7a973355cb34192ae70b2630523d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fallout 2 Game Box 256x256
+    second: {fileID: 2100000, guid: dff7817227d8b78469ffad493d710632, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feather
+    second: {fileID: 2100000, guid: a60ad08935350e74e877f71053d48ab3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Folder
+    second: {fileID: 2100000, guid: c3336499e90b0ff4b90bc14023b7b0b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Half Life Game Box 256x256
+    second: {fileID: 2100000, guid: 0d1996b9471b8a545942d6a37d564d10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Handbook for the Recently Deceased
+    second: {fileID: 2100000, guid: a00d0cc23f16dca4ca3369697d16ac58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hang In There
+    second: {fileID: 2100000, guid: fd2879e50d1ae704987c18cbe78b153f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 9f6d1d2fe5fc99042a5a9f4fef61f6b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesh Basket
+    second: {fileID: 2100000, guid: e27db1eb0b3c8cd489038bb025ae6f57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: N64 Controller
+    second: {fileID: 2100000, guid: 8b943bb898f0f1c48aaf9aa94ffd5fa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NEWS
+    second: {fileID: 2100000, guid: 61e158801c79cb24f98ea85bb4fa86b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Name Plate
+    second: {fileID: 2100000, guid: e8df7d71b61391844bf7f227e88fdf95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Necronomicon
+    second: {fileID: 2100000, guid: 88b89cef45fdf5d4cb1f7a5b41942a06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nevermind CD
+    second: {fileID: 2100000, guid: 4ec9969caa55a1049896199bd88d748e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Newspaper
+    second: {fileID: 2100000, guid: cbb0ae2fbf45861488e25aee07ae1a97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nintendo 64
+    second: {fileID: 2100000, guid: c4a67cbf3f294fe48a5e24ba79c0c139, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nintendo Power Volume 11
+    second: {fileID: 2100000, guid: cc421a1215243fd41a62beb30065979c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Nirvana Calendar
+    second: {fileID: 2100000, guid: 0244ed74c5214a74fba47419f4059260, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Notepad_
+    second: {fileID: 2100000, guid: 90c27df45b8863244a6554f13ff3cf06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office Chair
+    second: {fileID: 2100000, guid: 0b923b9433e32374eb21264b4d3126c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Origami Unicorn
+    second: {fileID: 2100000, guid: 609bb9f2225d7274597ef985c9207012, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PC Monitor amd Keyboard
+    second: {fileID: 2100000, guid: a010a3b85e95aab46a63567557b617d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PC Tower and Mouse
+    second: {fileID: 2100000, guid: a75c249d701dc9642bc3833ea9fa598b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Panasonic KX-T7420
+    second: {fileID: 2100000, guid: a5766525e11befb4eb4c54ccea1f26b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Panasonic VHS TV_
+    second: {fileID: 2100000, guid: 5c45f054b46e3f14a86faec42f155675, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pencil
+    second: {fileID: 2100000, guid: e6b3d9ac6cb9f1642830d527f9ed02d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pin Board
+    second: {fileID: 2100000, guid: eba4feb172341c24eae79cc751110c1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pot Plant
+    second: {fileID: 2100000, guid: c29d1d69c0bf66946a547ac4bdb7a4b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Power Cable
+    second: {fileID: 2100000, guid: 27021d271aad49346be61f4038c36d62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Power Strip
+    second: {fileID: 2100000, guid: a6fd027b33c15c146a41f2ef24177423, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubik's Cube
+    second: {fileID: 2100000, guid: 492488b993aa6a147be6dfba072a0c14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen Emission
+    second: {fileID: 2100000, guid: cec850754f7fc5a4ebcc08544e06d540, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Speed Bus Schedule
+    second: {fileID: 2100000, guid: 4bfb24ea173131c4cb32de83ca4e4031, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Speed VHS
+    second: {fileID: 2100000, guid: 869f2c6ba377b85498e933ad30a0ef25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spray Bottle
+    second: {fileID: 2100000, guid: ce7a0ee6d97366342bbc2e22cd3fdf0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stack of Papers
+    second: {fileID: 2100000, guid: 0efd0b5b43e9286428f016398bd4a872, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Steam
+    second: {fileID: 2100000, guid: ff41a71ecb8d79e47b1661cfc3d60c7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stick Notes
+    second: {fileID: 2100000, guid: a850809901e93a8468059134221f82d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Super Mario 64 Cartridge
+    second: {fileID: 2100000, guid: 599c7e00ba5aa044b886f2ee5ff7b1f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Swingline Stapler
+    second: {fileID: 2100000, guid: 3c0da3c0d25cd954a86f585bda9d6682, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ten CD
+    second: {fileID: 2100000, guid: 9bb01acaa001b044587df0284eca2321, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Terminator Poster
+    second: {fileID: 2100000, guid: 09e2ab2a33d924549af89c57bacbbd11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: The box
+    second: {fileID: 2100000, guid: fe0145c5051120f42b46e958eca871f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Umbrella Corp Key Card
+    second: {fileID: 2100000, guid: 6730b301db0fc8942905c8eee6c25e3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VHS Tape
+    second: {fileID: 2100000, guid: cee85c8f8ac9c16459a96903096498eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wrapper
+    second: {fileID: 2100000, guid: 87c761c61a8444e4ba15eed4e9468d3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Zeldas Letter
+    second: {fileID: 2100000, guid: b96d0b770fe2b8941abeccac9ed19b39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carpet
+    second: {fileID: 2100000, guid: b73f485a4b438ff468197dbf36fcaa82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: y2k Sticker
+    second: {fileID: 2100000, guid: f9ba30172f96ed54c9976c0dca7643af, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2 Drawer Filing Cabinet
+    second: {fileID: 2800000, guid: d78404f2e5bfe9741ad135d1b787065b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 4 Drawer Filing Cabinet 256x256
+    second: {fileID: 2800000, guid: 3c879588832617347b0dbdccbc08de96, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 7734 Calculator 256x256
+    second: {fileID: 2800000, guid: d01eb006a634c3745bd7ce325056c3b9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Astro Lounge CD
+    second: {fileID: 2800000, guid: 092856d7d59c3ee4eab16c58716aae52, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bag
+    second: {fileID: 2800000, guid: df68b3122e57f3c44b2558ebdd029452, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bag 256x256
+    second: {fileID: 2800000, guid: 25067a29fbd6e484ab32ca8fab64535a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Binders
+    second: {fileID: 2800000, guid: daa9d0670ffebea40bf01179b71f56d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Blade Runner Poster 256x256
+    second: {fileID: 2800000, guid: 1d77aafee5698214c94e4bcccf4e603f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Blank Floppy Disk 256x256
+    second: {fileID: 2800000, guid: 7e7e219f0c2e9464aa7138893c5162d0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Blank VHS 256x256
+    second: {fileID: 2800000, guid: 795dad8a858ec324b864bf1d6ee8538a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Burger 256x256
+    second: {fileID: 2800000, guid: b18f6aca8285c684cbd87ea224e5b620, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CD Textures
+    second: {fileID: 2800000, guid: 5fbd9d67885280644894de44b2116569, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CD Textures 256x256
+    second: {fileID: 2800000, guid: 2959d27abde5d084db9442d7a6183b94, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Clipboard 256x256
+    second: {fileID: 2800000, guid: 777e30d7f74649847a0ed8c7cd4bec0f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coffee
+    second: {fileID: 2800000, guid: 4222d384c84ec9b4f87054d27058b7aa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CorkBoard Texture 256x256
+    second: {fileID: 2800000, guid: a7126d3ed94ec8d4c8dd01683ae83124, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cubicle Wall 256x256
+    second: {fileID: 2800000, guid: 8a1a9d717d25e034d8670f07d601b02e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Definitely Maybe CD
+    second: {fileID: 2800000, guid: 15a29c27c50cee84cbe75961e5ce1938, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Doom Floppy Disk 256x256
+    second: {fileID: 2800000, guid: f7d74a85f84d7f648ac496dd7da0c309, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Extension Chord
+    second: {fileID: 2800000, guid: 091a1d70808fe6b4484fae239e297299, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FF7 Poster 256x256
+    second: {fileID: 2800000, guid: e097ee73b0b810e49b657436c65420af, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fallout 1 Survival Guide 256x256
+    second: {fileID: 2800000, guid: 0b09e616e47014c42b1d7960be10e0d7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fallout 2 Game Box 256x256
+    second: {fileID: 2800000, guid: df88ab4654b34e048a65bf923c624542, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Feather
+    second: {fileID: 2800000, guid: cc43ac6900f4011409e29c168fddbaf7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Folder 256x256
+    second: {fileID: 2800000, guid: 8393d343e7cb09041925856132a3c5fc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Half Life Game Box 256x256
+    second: {fileID: 2800000, guid: 7bdd1ea543b27d04d9843ef1b71756a9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Handbook for the Recently Deceased 256x256
+    second: {fileID: 2800000, guid: 83e2bb5826bf24e4fb23060ef9674fd2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hang In There Poster 256x256
+    second: {fileID: 2800000, guid: 5c7877d03e2de7c488c858a5875232dc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Mesh Basket 256x256
+    second: {fileID: 2800000, guid: 57c85982ae9b136438628a1ae2f2c3fc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal Gear Rex Blueprints
+    second: {fileID: 2800000, guid: 5710e4aa854be7840bc0a3bc509742f1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: N64 256x256
+    second: {fileID: 2800000, guid: bba28ad94be4dc34c928fca0a13457bb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: N64 Controller 256x256
+    second: {fileID: 2800000, guid: c504514fdadf54348a8cee89550ca88d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NEWS
+    second: {fileID: 2800000, guid: 10ba90075caa7894a97a8156d589137a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Name Plate
+    second: {fileID: 2800000, guid: 515134a7ae60d564c896c5e10600b415, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Necronomicon 256x256
+    second: {fileID: 2800000, guid: c3c875d66fddfd943b0b3e53ff67b384, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nevermind Textures
+    second: {fileID: 2800000, guid: c0019639ec9da26469559cfc6739f2a3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Newspaper
+    second: {fileID: 2800000, guid: 4696dff3a31952a4ba24d23ae0155983, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nintendo Magazines 256x256
+    second: {fileID: 2800000, guid: 9f45138eab031d6499e9efb15b74507d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nirvana Calendar 256x256
+    second: {fileID: 2800000, guid: 65706fb4e531070489f41f2c8cb73c72, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Notepad
+    second: {fileID: 2800000, guid: 0c7bb6a9bb85ae34995c53f1339cb99f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Origami Unicorn
+    second: {fileID: 2800000, guid: d0de5b1cf66eb6245becaa106103b2da, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Panasonic KX-T7420 Textures 256x256
+    second: {fileID: 2800000, guid: e6852aee221fbde48944e48419e27909, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Panasonic VHS TV 256X256
+    second: {fileID: 2800000, guid: 6682546a372dd0d42b95965c7199847a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pencil 256x256
+    second: {fileID: 2800000, guid: b4acd4e35cc4de54881dd270e92e839a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pin Board
+    second: {fileID: 2800000, guid: 69101f87be526f24aa06d5d1fc230eea, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rubicks Cube 256x256
+    second: {fileID: 2800000, guid: 2592b34b59e52a7429c2bf70373f1023, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Silver
+    second: {fileID: 2800000, guid: 85828664bb4b17941a65f5940a3d23ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Speed 1994 Prop Pamphlets 256x256
+    second: {fileID: 2800000, guid: bf8667793a1e7534aa4a919933a853dd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Speed VHS 256x256
+    second: {fileID: 2800000, guid: a49562253b62ec94fbe879ec5d420b5c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Spray Bottle
+    second: {fileID: 2800000, guid: 5f431a0577226144e8980228343b1f38, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steam
+    second: {fileID: 2800000, guid: 346fd55c44ea3cc42ad08f5dd45d77b6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sticky Notes
+    second: {fileID: 2800000, guid: 685e10332b559e846bce682f8975dbc5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Super Mario N64 Cartridge 256x256
+    second: {fileID: 2800000, guid: 4a6d6bbf6b3e6b8429252799a41edb72, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Swingline-Stapler
+    second: {fileID: 2800000, guid: d70a2835495828842a5a0bf9d766a0ef, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ten Textures
+    second: {fileID: 2800000, guid: b0677e9548e40a448be6725a76b3e7f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Terminator Poster 256x256
+    second: {fileID: 2800000, guid: 80e36fecaa56fd4499422107cf547271, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: The Box
+    second: {fileID: 2800000, guid: 9f1d29a51213ef74cafc70de1094314c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tyler Durden Business Card
+    second: {fileID: 2800000, guid: 1e1afd2434d6ed140ba99d25fac45284, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Umbrella Corp Key Card
+    second: {fileID: 2800000, guid: 1738a6c1f5c0b124ca460a3654565114, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wrapper 256x256
+    second: {fileID: 2800000, guid: b2ee7c69a5fbdbb428a64abf8bb379f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Zeldas Letter
+    second: {fileID: 2800000, guid: 278631ee1a6b7ed4d85feee669110022, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: desk chair 256x256
+    second: {fileID: 2800000, guid: e65c4b2fa1d01914ca0e472ee90e2367, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: paper side
+    second: {fileID: 2800000, guid: 42d278a5a3ef91d4c961579da37883ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: potted plant 256x256
+    second: {fileID: 2800000, guid: 771ccac4ea7280940a476b33a334b79d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: seamless carpet
+    second: {fileID: 2800000, guid: ae8b0624310f13841bbb9adb81007ef0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood 2
+    second: {fileID: 2800000, guid: 252c8b4a4ccef5f488ecc287e86d186b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: y2k Sticker 256x256
+    second: {fileID: 2800000, guid: 0f976b9ff7993784798f8967aadfd847, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
