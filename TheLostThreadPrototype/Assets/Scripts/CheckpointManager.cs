@@ -13,13 +13,15 @@ public class CheckpointManager : MonoBehaviour
     private string savePath;
     private CheckpointData currentData;
 
+    public Transform playerTransform;
+    
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
-
+        
         savePath = Application.persistentDataPath + "/save.json";
     }
 
@@ -39,6 +41,7 @@ public class CheckpointManager : MonoBehaviour
 
     public void SetCheckpoint(Vector3 position)
     {
+        Debug.Log($"Checkpoint Set!{Time.time}");
         if (currentData == null)
             currentData = new CheckpointData();
 
@@ -61,7 +64,9 @@ public class CheckpointManager : MonoBehaviour
 
     public Vector3 LoadPosition()
     {
-        if (!File.Exists(savePath)) return Vector3.zero;
+        if (!File.Exists(savePath)) return playerTransform
+            ? playerTransform.position
+            : Vector3.zero;
 
         string json = File.ReadAllText(savePath);
         currentData = JsonUtility.FromJson<CheckpointData>(json);

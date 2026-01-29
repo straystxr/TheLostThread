@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +45,7 @@ public class Health : MonoBehaviour
         //fadeAnimator.SetTrigger("fadeInAnim");
         if (CurrentHealth <= 0)
         {
-            Invoke(nameof(RespawnPlayer), 2f);
+            StartCoroutine(RespawnPlayer());
         }
     }
 
@@ -55,8 +56,10 @@ public class Health : MonoBehaviour
         Destroy(gameObject); // player should be moved to the closest checkpoint, not destroyed
     }
 
-    private void RespawnPlayer()
+    private IEnumerator RespawnPlayer()
     {
+        yield return new WaitForSeconds(2f);
+        
         //setting up a variable to fetch the respawn point position and loading it
         Vector3 respawnPosition = CheckpointManager.Instance.LoadPosition();
 
