@@ -81,7 +81,9 @@ public class KeypadInteractable : MonoBehaviour, IInteractable
     }
 }
 
-    public void Interact(Transform interactor)
+public bool CanHold => false;
+
+public void Interact(Transform interactor)
     {
         if (isInteracting) return;
         isInteracting = true;

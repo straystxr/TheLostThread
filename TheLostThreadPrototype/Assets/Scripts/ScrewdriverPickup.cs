@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ScrewdriverPickup : MonoBehaviour, IInteractable
 {
+    public bool CanHold => true;
+
     public void Interact(Transform interactor)
     {
         Debug.Log("Screwdriver Interact called");

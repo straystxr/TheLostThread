@@ -11,6 +11,8 @@ public class StickyNoteInteractable : MonoBehaviour, IInteractable
 
     private bool collected = false;
 
+    public bool CanHold => false;
+
     public void Interact(Transform interactor)
     {
         if (collected) return;

@@ -26,7 +26,6 @@ public class VentInteractable : MonoBehaviour, IInteractable
     {
         return isOpen; // returns true if all bolts removed
     }
-
     
     private bool ventOpened = false;
     private bool isInteracting;
@@ -70,6 +69,8 @@ public class VentInteractable : MonoBehaviour, IInteractable
             HandleClick();
         }
     }
+
+    public bool CanHold => false;
 
     public void Interact(Transform interactor)
     {

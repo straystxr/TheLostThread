@@ -50,6 +50,8 @@ public class Draggable : MonoBehaviour, IInteractable
         
     }
 
+    public bool CanHold => true;
+
     public void Interact(Transform target)
     {
         //if its not a draggable it will have an early return not allowing it to be dragged

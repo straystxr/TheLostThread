@@ -48,6 +48,8 @@ public class MagnetLever : MonoBehaviour, IInteractable
         }
     }
 
+    public bool CanHold => false;
+
     public void Interact(Transform interactor)
     {
         if (isInteracting) return;

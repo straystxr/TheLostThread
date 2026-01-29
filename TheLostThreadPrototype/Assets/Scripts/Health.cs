@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator RespawnPlayer()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         
         //setting up a variable to fetch the respawn point position and loading it
         Vector3 respawnPosition = CheckpointManager.Instance.LoadPosition();

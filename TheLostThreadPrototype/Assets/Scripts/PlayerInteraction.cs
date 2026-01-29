@@ -32,6 +32,12 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             playerInput.ActivateInput();
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.pink;
+            Gizmos.DrawWireSphere(hands.position, radiusOfInteraction);
+        }
+
         public void OnInteract(InputAction.CallbackContext context)
         {
             Debug.Log($"[E] inHand={(inHand != null)}, heldPlug={(heldPlug != null)}");
@@ -91,33 +97,27 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 
             //var rayCasting = new RaycastHit[4]; //results of raycasting
             Collider[] colliders = new Collider[32]; //going for collider instead of raycasting
-            int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction,
-                colliders);
+            int hitCounts = Physics.OverlapSphereNonAlloc(origin, radiusOfInteraction, colliders, interactableMask, QueryTriggerInteraction.Collide);
             
             //loop to recognize whether an item is pickupable or draggable
             for (int i = 0; i < hitCounts; i++)
             {
-                
+                Debug.Log($"InteractionHit: {colliders[i].name}");
                 //trying to see if its hitting anything
-                Debug.Log("Hit: " + colliders[i].name);
                 if (colliders[i].attachedRigidbody && colliders[i].attachedRigidbody.TryGetComponent(out IInteractable interactable))
                 {
+                    Debug.Log($"{interactable.GetType().Name} found!!");
                     //ignore if we’re already interacting with it
                     if (interactable == inHand) continue;
                     
                     //storing the object's data in hand
-                    inHand = interactable;
-                    Debug.Log($"{interactable.GetType().Name} found!!");
+                    if (interactable.CanHold) inHand = interactable;
                     
-                    //getting type plug
-                    heldPlug = colliders[i].attachedRigidbody.GetComponent<Plug>();
-
-                    //if plug is in socket == remove
-                    if (heldPlug != null && heldPlug.currentSocket != null)
+                    if (colliders[i].attachedRigidbody.TryGetComponent<Plug>(out var plug) &&
+                        plug.currentSocket != null)
                     {
                         heldPlug.currentSocket.RemovePlug();
                     }
-
                     
                     //the object will be held from the source aka hands
                     interactable.Interact(hands);
@@ -160,6 +160,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             Plug plug = socket.currentPlug;
             socket.RemovePlug();
 
+            if (plug == null) return;
+            
             Debug.Log($"Removed Plug: {plug.GetType().Name}");
             //if its not a plug get interactable components and early return to not change anything
             if (!plug.TryGetComponent(out IInteractable interactable)) return;

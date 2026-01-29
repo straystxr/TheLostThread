@@ -8,7 +8,9 @@ public class ControlPanel : MonoBehaviour, IInteractable
     [SerializeField] private CraneRotation crane;        // new
     [SerializeField] private CinemachineCamera craneCam;
     [SerializeField] private CinemachineCamera defaultCam;
-    
+
+    public bool CanHold => false;
+
     public void Interact(Transform interactor)
     {
         var playerInput = PlayerInput.all.First();

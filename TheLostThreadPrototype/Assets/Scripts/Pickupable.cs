@@ -31,6 +31,8 @@ public class Pickupable : MonoBehaviour, IInteractable
         //Debug.Log($"Target position is " + target.position);
     }*/
 
+    public bool CanHold => true;
+
     public void Interact(Transform target)
     {
         //early return if its already held
