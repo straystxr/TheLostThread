@@ -12,6 +12,8 @@ The system includes the following features:
 
 ## Core Mechanics
 The core mechanics of The Lost Thread include:
-- Player movement along with its camera controls.
-- Object interaction to solve puzzles including pickupables and draggables to create a more physics-based game.
-- Puzzle-solving that requires players to think critically and use their environment to progress.
+- Player Movement that has a state machine within it to include idle, walking, running, and jumping animation states.
+- Object Interaction that allows the player to pick up, drag, or interact with objects within the environment that has a radius of interaction, and the player can only interact with one object at a time. 
+- A sub system for a specific puzzle that is based of the object interaction mechanic, where the player has to pick up and match the objects with their corresponding slots to solve the puzzle using read-only script and conditions to check when it matches or when it doesn't match.
+
+
