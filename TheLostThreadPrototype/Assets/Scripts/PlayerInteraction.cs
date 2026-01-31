@@ -89,7 +89,6 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 
                 Interact?.Invoke(null);
                 return;
-                
             }
             Debug.Log("Interacting...");
             //creating a variable of the source and its position
@@ -115,10 +114,22 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                     //storing the object's data in hand
                     if (interactable.CanHold) inHand = interactable;
                     
-                    if (colliders[i].attachedRigidbody.TryGetComponent<Plug>(out var plug) &&
-                        plug.currentSocket != null)
+                    // Check for Plug component FIRST, outside the currentSocket check
+                    if (colliders[i].attachedRigidbody.TryGetComponent<Plug>(out var plug))
                     {
-                        heldPlug.currentSocket.RemovePlug();
+                        heldPlug = plug;  // assigning heldPlug
+    
+                        // Only remove from socket if it's actually in one
+                        if (plug.currentSocket != null)
+                        {
+                            plug.currentSocket.RemovePlug();  // Use plug, not heldPlug
+                        }
+                    }
+
+                    //handling interactable objects that can be held
+                    if (interactable.CanHold) 
+                    {
+                        inHand = interactable;
                     }
                     
                     //the object will be held from the source aka hands
