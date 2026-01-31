@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Draggable : MonoBehaviour, IInteractable
 {
+    [Header("DRAGGABLE SETTINGS")]
     //Dragging Physics Variables
     //checking whether object can be picked up by player which will be set as true for experimentation
     [SerializeField]private bool canBeDragged = true; 
@@ -15,6 +16,7 @@ public class Draggable : MonoBehaviour, IInteractable
     //if the player is too far it will stop being dragged
     [SerializeField] private float maxDistance = 10f; 
     
+    [Header("COMPONENTS")]
     //in this class we will have the collisions actually happening but no motion will occur
     public Rigidbody rb;
     //player component aka source of who's dragging the object

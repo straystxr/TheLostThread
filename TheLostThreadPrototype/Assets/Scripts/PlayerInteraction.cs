@@ -9,11 +9,13 @@ namespace Scenes.Nirvana_Mechanics.Scripts
     {
         public event Action<IInteractable> Interact;
         
+        [Header("Player Position Settings")]
         //variables 
         [SerializeField] private Transform source; //source from where the object will be held
         [SerializeField] private Transform hands;
         [SerializeField] private float radiusOfInteraction = 5f; //the radius of how far the object must be from the player
         
+        [Header("Current Held Object")]
         //object being held
         private IInteractable inHand;
         private PlayerInput playerInput;

@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 using TMPro;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class KeypadInteractable : MonoBehaviour, IInteractable
 {
@@ -35,6 +37,11 @@ public class KeypadInteractable : MonoBehaviour, IInteractable
     
     private List<string> currentCode = new List<string>();
     private bool isInteracting = false;
+    
+    [Header("End Game Fade")]
+    [SerializeField] public Animator fadeAnimator;
+    [SerializeField] private GameObject creditsText;
+    [SerializeField] private float creditsDisplayTime = 5f;
     
     
 
@@ -173,6 +180,9 @@ public void Interact(Transform interactor)
         {
             if (correctSound) correctSound.Play();
             OpenDoor();
+            //Ending game credits sequence
+            StartCoroutine(GameEnded());
+            return;
         }
         else
         {
@@ -192,5 +202,20 @@ public void Interact(Transform interactor)
 
         AudioSource audio = door.GetComponent<AudioSource>();
         if (audio) audio.Play();
+    }
+
+    private IEnumerator GameEnded()
+    {
+        //animation trigger for fade in
+        fadeAnimator.SetTrigger("fadeInAnim");
+        
+        //waiting for fade to complete  
+        yield return new WaitForSeconds(3f);
+        //enable credits text
+        creditsText.SetActive(true);
+        //wait for credits display time
+        yield return new WaitForSeconds(creditsDisplayTime);
+        //loading back to main menu
+        SceneManager.LoadScene("MainMenu");
     }
 }
