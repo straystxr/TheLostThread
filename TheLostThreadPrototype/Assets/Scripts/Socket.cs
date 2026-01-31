@@ -5,6 +5,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 {
     public class Socket : MonoBehaviour
     {
+        [Header("SOCKET SETTINGS")]
         //calling the data from Plug to get the order of the plugs
         public PlugOrder order;
         //plugs within this socket if any
@@ -12,6 +13,8 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         //bool to check if its correct or not which will be automatically set to false 
         public bool isCorrect = false;
         private bool isPlayerInRange = false;
+        
+        [SerializeField] private Transform plugPoint; //point where the plug will be inserted
 
         /*
         private void OnTriggerEnter(Collider other)
@@ -51,6 +54,20 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             //turning the variables to true
             plug.isConnected = true;
             plug.currentSocket = this;
+            
+            Transform trans = plug.transform;
+            
+            if (trans.TryGetComponent(out Rigidbody rb))
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+            }
+
+            trans.SetParent(null);
+            trans.position = plugPoint.position;
+            trans.rotation = plugPoint.rotation;
+            trans.SetParent(plugPoint);
 
             if (plug.plugorder == order)
             {
@@ -96,7 +113,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
         public bool CanAcceptPlug()
         {
             //only will care for plug
-            return currentPlug == null;
+            return currentPlug == null && isPlayerInRange;
         }
         
         public bool CanRemovePlug()

@@ -53,7 +53,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
                 //inserting and checking condition
                 if (socket != null && socket.CanAcceptPlug() && heldPlug.plugorder == socket.order)
                 {
-                    inHand.Release(); //removes isHeld to prevent it from still "holding" the plug
+                    //inHand.Release(); //removes isHeld to prevent it from still "holding" the plug
                     //firing insert socket method and will only insert with those that have socket script
                     insertSocket(socket);
                     socket.ConnectedPlug(heldPlug);
@@ -78,8 +78,9 @@ namespace Scenes.Nirvana_Mechanics.Scripts
             }
             
             //If we're already holding an item/object there is no need to continue the method
-            if (inHand != null && heldPlug != null)
+            if (inHand != null)
             {
+                transform.SetParent(null);
                 // Only release if the object supports Release
                 Debug.Log("no valid socket... dropping");
                 inHand.Release();   //drops it 
@@ -88,6 +89,7 @@ namespace Scenes.Nirvana_Mechanics.Scripts
 
                 Interact?.Invoke(null);
                 return;
+                
             }
             Debug.Log("Interacting...");
             //creating a variable of the source and its position
