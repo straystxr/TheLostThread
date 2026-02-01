@@ -100,6 +100,68 @@ and playerInteraction derived from the PlayerInteraction.cs script
     - private void insertSocket(Socket socket){...}
     - private IInteractable RemovePlugFromSocket(Socket socket){...}
     - private void socketsNearby(){...}
+# Data Structures Used
+## Interfaces
+- The game uses interfaces to define the behavior of interactable objects. The IInteractable interface defines methods for 
+interacting with objects, such as PickUp, Drop, and Interact. This allows for different types of objects to implement their own 
+interaction logic while adhering to a common interface.
+- The IInteractable interface is implemented by various classes, such as Plug, Socket, and Draggable, each providing specific 
+functionality for interacting with those objects.
+  ```
+  using UnityEngine;
+
+  public interface IInteractable
+  {
+  bool CanHold { get; }
+  void Interact(Transform interactor);
+  void Release();
+  }
+  
+## State Machines
+
+        private void NormalState()
+        {
+            // Movement
+            Vector3 velocity = moveDirection.normalized * NormalSpeed;
+            velocity.y = myRigidbody.linearVelocity.y;
+            myRigidbody.linearVelocity = velocity;`
+            // Rotation
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            Quaternion smoothRotation = Quaternion.RotateTowards(
+                myRigidbody.rotation,
+                targetRotation,
+                turnSpeed * Time.fixedDeltaTime
+        );
+
+        myRigidbody.MoveRotation(smoothRotation);
+    }
+
+    private void CarryingState()
+    {
+        // Movement
+        Vector3 velocity = moveDirection.normalized * CarryingSpeed;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
+
+        // Rotation
+        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        Quaternion smoothRotation = Quaternion.RotateTowards(
+            myRigidbody.rotation,
+            targetRotation,
+            turnSpeed * Time.fixedDeltaTime
+        );
+
+        myRigidbody.MoveRotation(smoothRotation);
+    }
+
+    private void DraggingState()
+    {
+        // Movement
+        Vector3 velocity = moveDirection.normalized * DraggingSpeed;
+        velocity.y = myRigidbody.linearVelocity.y;
+        myRigidbody.linearVelocity = velocity;
+        
+    }'
 ## If/Else Concept
 - Throughout this game a lot of if/else statements are used to control the flow of the game. For example, in the object 
 interaction mechanic, if the player is within the interaction radius of an object and presses the interact button, then 
@@ -108,14 +170,23 @@ the object will be picked up. Else, nothing will happen.
 will be able to proceed to the next area. Else, the player will have to keep trying to get the passcode correct without 
 the rest of the hints provided or continuously die in the obstacle.
 
-## Reflection Throughout Development
-Throughout development, we faced several challenges that required us to adapt and learn new skills. One of the main 
-challenges was implementing the puzzle mechanics in a way that was both engaging and intuitive for players. 
-We had to experiment with different designs and gather feedback to refine the puzzles.
-Another challenge we unknowningly faced was the map size hindering the interactions making it difficult for players to 
-find and interact with objects.
-Lastly merge conflicts was a very common issue that we faced as we did not really know how to optimize it well as well as
-considering that we were all new to using version control systems like Github. We learned the importance of clear communication and
-coordination when working in a team environment.
-Overall, the development of The Lost Thread was a valuable learning experience that taught us the importance of
-adaptability, problem-solving, and teamwork in game development.
+## Reflection on Programming Structure
+
+**State Machines for Structured Control:**
+We initially attempted to manage player behavior using boolean flags (`isWalking`, `isCarrying`, `isDragging`). 
+This resulted in conflicting states where the animation system would trigger multiple clips simultaneously. 
+Implementing an enum-based State Machine (`PlayerState`) with strict If/Else transition logic eliminated these race conditions. 
+The structure enforces that the bear exists in only one state at a time, with transitions governed by clear conditional 
+checks: if holding an object and dragging PhysicsJoint → Dragging state, else if holding object → Carrying state.
+
+**Interface Abstraction for Modularity:**
+Using `IInteractable` created a contract-based architecture. `PlayerInteraction` references the interface, not concrete 
+classes, allowing Plugs, Sockets, and Draggables to be treated with polymorphism (Object Oriented Concept). This reduced 
+coupling; we added new puzzle objects by implementing the interface rather than modifying existing interaction code, 
+demonstrating how abstraction improves code reactivity to changing requirements.
+
+**Separation of Concerns:**
+Decoupling `PlayerMovement` (physics/animation) from `PlayerInteraction` (input/handling) meant modifying jump forces 
+in `FixedUpdate()` never risked breaking pickup logic. The state machine served as the communication bridge, 
+ensuring these systems coordinated through formal state changes rather than direct references, improving maintainability 
+and reducing side effects.
