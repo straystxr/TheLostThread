@@ -173,11 +173,11 @@ the rest of the hints provided or continuously die in the obstacle.
 ## Reflection on Programming Structure
 
 **State Machines for Structured Control:**
-We initially attempted to manage player behavior using boolean flags (`isWalking`, `isCarrying`, `isDragging`). 
+We initially attempted to manage player behavior using booleans such as (`isWalking`, `isCarrying`, `isDragging`). 
 This resulted in conflicting states where the animation system would trigger multiple clips simultaneously. 
 Implementing an enum-based State Machine (`PlayerState`) with strict If/Else transition logic eliminated these race conditions. 
 The structure enforces that the bear exists in only one state at a time, with transitions governed by clear conditional 
-checks: if holding an object and dragging PhysicsJoint → Dragging state, else if holding object → Carrying state.
+checks. This improved both reliability and readability of the movement code.
 
 **Interface Abstraction for Modularity:**
 Using `IInteractable` created a contract-based architecture. `PlayerInteraction` references the interface, not concrete 
