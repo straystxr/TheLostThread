@@ -29,7 +29,7 @@ with each puzzle having its own unique script to handle the specific puzzle mech
 - Player movement includes the Player Input system found within the Unity Engine to handle input from the player similarly to Object Interaction.
 - Player movements have variables such as; speed, jump height, rotation speed, Rigidbody components, Animator component, 
 and playerInteraction derived from the PlayerInteraction.cs script 
-**Player Movement Variables and Methods:**
+## Player Movement Variables and Methods:
 ### Variables:
     [Header("Movement")]
     [SerializeField] private float NormalSpeed = 5f;
@@ -54,20 +54,52 @@ and playerInteraction derived from the PlayerInteraction.cs script
     }
     private bool isGrounded;
 
-#### Methods:
-    - private void OnCollisionStay(Collision collision)
-    - private void OnCollisionExit(Collision collision)
-    - private void OnJump(InputAction.CallbackContext context)
-    - private void Awake()
-    - private void OnEnable()
-    - private void OnDisable()
-    - private void OnHandChanged(IInteractble obj)
-    - private void FixedUpdate()
-    - private void NormalState()
-    - private void CarryingState()
-    - private void DraggingState()
-    - private void OnMove(InputAction.CallbackContext context)
-
+### Methods:
+    - private void OnCollisionStay(Collision collision){...}
+    - private void OnCollisionExit(Collision collision){...}
+    - private void OnJump(InputAction.CallbackContext context){...}
+    - private void Awake(){...}
+    - private void OnEnable(){...}
+    - private void OnDisable(){...}
+    - private void OnHandChanged(IInteractble obj){...}
+    - private void FixedUpdate(){...}
+    - private void NormalState(){...}
+    - private void CarryingState(){...}
+    - private void DraggingState(){...}
+    - private void OnMove(InputAction.CallbackContext context){...}
+### Player States Enum:
+    - public enum PlayerState
+    {
+        None,
+        Normal,
+        Carrying,
+        Dragging
+    }
+# Player Interaction Variables and Methods:
+### Variables:
+    - public event Action<IInteractable> Interact;
+        
+    - [Header("Player Position Settings")]
+    //variables 
+    - [SerializeField] private Transform source; //source from where the object will be held
+    - [SerializeField] private Transform hands;
+    - [SerializeField] private float radiusOfInteraction = 5f; //the radius of how far the object must be from the player
+        
+    - [Header("Current Held Object")]
+        //object being held
+        private IInteractable inHand;
+        private PlayerInput playerInput;
+        private Plug heldPlug;
+        
+        //draggable features
+        private Draggable draggingHand;
+### Methods:
+    - private void Awake(){...}
+    - private void Start(){...}
+    - private void OnInteract(InputAction.CallbackContext context){...}
+    - private void insertSocket(Socket socket){...}
+    - private IInteractable RemovePlugFromSocket(Socket socket){...}
+    - private void socketsNearby(){...}
 ## If/Else Concept
 - Throughout this game a lot of if/else statements are used to control the flow of the game. For example, in the object 
 interaction mechanic, if the player is within the interaction radius of an object and presses the interact button, then 
@@ -75,3 +107,15 @@ the object will be picked up. Else, nothing will happen.
 - If the player manages to place the metal object in the correct position in the puzzle with the crane, then the player 
 will be able to proceed to the next area. Else, the player will have to keep trying to get the passcode correct without 
 the rest of the hints provided or continuously die in the obstacle.
+
+## Reflection Throughout Development
+Throughout development, we faced several challenges that required us to adapt and learn new skills. One of the main 
+challenges was implementing the puzzle mechanics in a way that was both engaging and intuitive for players. 
+We had to experiment with different designs and gather feedback to refine the puzzles.
+Another challenge we unknowningly faced was the map size hindering the interactions making it difficult for players to 
+find and interact with objects.
+Lastly merge conflicts was a very common issue that we faced as we did not really know how to optimize it well as well as
+considering that we were all new to using version control systems like Github. We learned the importance of clear communication and
+coordination when working in a team environment.
+Overall, the development of The Lost Thread was a valuable learning experience that taught us the importance of
+adaptability, problem-solving, and teamwork in game development.
