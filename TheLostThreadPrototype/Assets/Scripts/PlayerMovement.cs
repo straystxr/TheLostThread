@@ -20,9 +20,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravityScale = 1f;
 
+    [Header("Audio")]
+    public AudioSource jumpSound;
+    public AudioSource runSound;
 
     [SerializeField] private PlayerState state;
-
+    
+    private bool isRunningSoundPlaying = false;
+    
     private Rigidbody myRigidbody;
     private Vector3 moveDirection;
     private PlayerInteraction playerInteraction;
@@ -59,6 +64,12 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded) return;
 
         myRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        
+        if (jumpSound != null)
+        {
+            jumpSound.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+            jumpSound.Play();
+        }
         
         Debug.Log("Jump pressed. Grounded: " + isGrounded);
 
@@ -109,8 +120,11 @@ public class PlayerMovement : MonoBehaviour
         if (moveDirection.magnitude <= 0.01f)
         {
             myRigidbody.linearVelocity = new Vector3(0f, myRigidbody.linearVelocity.y, 0f);
+            StopRunningSound(); 
             return;
         }
+        
+        PlayRunningSound();
 
         if (state == PlayerState.Normal)
             NormalState();
@@ -121,6 +135,26 @@ public class PlayerMovement : MonoBehaviour
         if (state == PlayerState.Dragging)
             DraggingState();
     }
+    
+    private void PlayRunningSound()
+    {
+        if (runSound != null && !isRunningSoundPlaying)
+        {
+            runSound.loop = true; // footsteps loop
+            runSound.Play();
+            isRunningSoundPlaying = true;
+        }
+    }
+
+    private void StopRunningSound()
+    {
+        if (runSound != null && isRunningSoundPlaying)
+        {
+            runSound.Stop();
+            isRunningSoundPlaying = false;
+        }
+    }
+
 
     private void NormalState()
     {
