@@ -7,7 +7,8 @@ public class AudioTrigger : MonoBehaviour
     public AudioSource playerSplash;  
     public AudioSource playerPain;   
     public AudioSource metalSplash;
-    public AudioSource metalMagnet; // New field
+    public AudioSource metalMagnet;
+    public AudioSource bubblingSound; 
 
     [Header("Fade Settings")]
     public float fadeOutTime = 1.5f; 
@@ -28,10 +29,13 @@ public class AudioTrigger : MonoBehaviour
                 playerSplash.Play();
                 fadeCoroutine = StartCoroutine(FadeOutPlayerSplash());
             }
-
             
             if (playerPain != null)
                 playerPain.Play();
+            
+            if (bubblingSound != null)
+                bubblingSound.Play();
+            
         }
         else if (other.CompareTag("Metal"))
         {
