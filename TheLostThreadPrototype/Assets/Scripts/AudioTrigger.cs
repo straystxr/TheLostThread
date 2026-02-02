@@ -4,12 +4,13 @@ using System.Collections;
 public class AudioTrigger : MonoBehaviour
 {
     [Header("Audio Sources")]
-    public AudioSource playerSplash;  // First player sound (fading)
-    public AudioSource playerPain;    // Second player sound (plays instantly)
-    public AudioSource metalSplash;   // Metal sound
+    public AudioSource playerSplash;  
+    public AudioSource playerPain;   
+    public AudioSource metalSplash;
+    public AudioSource metalMagnet; // New field
 
     [Header("Fade Settings")]
-    public float fadeOutTime = 1.5f;
+    public float fadeOutTime = 1.5f; 
 
     private Coroutine fadeCoroutine;
 
@@ -17,37 +18,30 @@ public class AudioTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Stop previous fade if still running
-            if (fadeCoroutine != null)
-                StopCoroutine(fadeCoroutine);
+            // Play playerSplash with fade
+            if (playerSplash != null)
+            {
+                if (fadeCoroutine != null)
+                    StopCoroutine(fadeCoroutine);
 
-            // Stop metal splash if playing
-            metalSplash.Stop();
+                playerSplash.volume = 1f;
+                playerSplash.Play();
+                fadeCoroutine = StartCoroutine(FadeOutPlayerSplash());
+            }
 
-            // Play player splash with fade
-            playerSplash.volume = 1f;
-            playerSplash.Play();
-            fadeCoroutine = StartCoroutine(FadeOutPlayerSplash());
-
-            // Play player pain instantly
-            playerPain.volume = 1f;
-            playerPain.Play();
+            
+            if (playerPain != null)
+                playerPain.Play();
         }
         else if (other.CompareTag("Metal"))
         {
-            // Stop any player sounds
-            if (fadeCoroutine != null)
-            {
-                StopCoroutine(fadeCoroutine);
-                fadeCoroutine = null;
-            }
+            
+            if (metalSplash != null)
+                metalSplash.Play();
 
-            playerSplash.Stop();
-            playerPain.Stop();
-
-            // Play metal splash
-            metalSplash.volume = 1f;
-            metalSplash.Play();
+            
+            if (metalMagnet != null)
+                metalMagnet.Play();
         }
     }
 
