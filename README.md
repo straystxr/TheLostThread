@@ -208,7 +208,40 @@ not be able to achieve the last fragment of the code.
 else the door will remain locked and the player will stay stuck in the junkyard.
 - If the player manages to collect all the notes spread out across the junkyard, then they will be rewarded with knowing 
 what the code is, else they will have to figure it out on their own or through trial and error, increasing difficulty.
+  if (context.phase != InputActionPhase.Started) return;
 
+            if (inHand != null && heldPlug != null)
+            {
+                Socket socket = socketsNearyby();
+                Debug.Log($"socket={(socket != null ? socket.name : "NULL")}");
+                if(socket != null)  Debug.Log($"{socket.CanAcceptPlug()}");
+                
+                //inserting and checking condition
+                if (socket != null && socket.CanAcceptPlug() && heldPlug.plugorder == socket.order)
+                {
+                    //inHand.Release(); //removes isHeld to prevent it from still "holding" the plug
+                    //firing insert socket method and will only insert with those that have socket script
+                    insertSocket(socket);
+                    socket.ConnectedPlug(heldPlug);
+                    
+                    //turning inhand and heldplug null
+                    inHand = null;
+                    heldPlug = null;
+
+                    Interact?.Invoke(null);
+                    return;
+                }
+            }
+            
+            if (inHand == null)
+            {
+                Socket socket = socketsNearyby();
+                if (socket != null && socket.CanAcceptPlug())
+                {
+                    RemovePlugFromSocket(socket);
+                    return;
+                }
+            }
 
 ## Reflection on Programming Structure
 
