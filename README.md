@@ -117,8 +117,39 @@ functionality for interacting with those objects.
   void Release();
   }
   
+  //enum to define the order of the plug
+    public enum PlugOrder
+    {
+    first,
+    second,
+    third,
+    fourth
+    }
+    
+    public class Plug : MonoBehaviour
+    {
+    //script is used to store data only
+    public PlugOrder plugorder;
+
+    //bool is set to false immediately as the plugs will not be connected initially and will be used in other scripts
+    public bool isConnected = false;
+    public Scenes.Nirvana_Mechanics.Scripts.Socket currentSocket;
+    }
+
+    ```
+  
 ## State Machines
 
+     FixedUpdate(){
+        if (state == PlayerState.Normal)
+            NormalState();
+        
+        if (state == PlayerState.Carrying)
+            CarryingState();
+        
+        if (state == PlayerState.Dragging)
+            DraggingState();
+     }
         private void NormalState()
         {
             // Movement
@@ -169,6 +200,15 @@ the object will be picked up. Else, nothing will happen.
 - If the player manages to place the metal object in the correct position in the puzzle with the crane, then the player 
 will be able to proceed to the next area. Else, the player will have to keep trying to get the passcode correct without 
 the rest of the hints provided or continuously die in the obstacle.
+- If the player interacts with a socket while holding a plug, then the plug will be inserted into the socket. 
+Else, if the player interacts with a socket while not holding anything, then the plug will be removed from the socket
+- If the player solves the puzzle correctly then the player will be able to advance and turn on the fan, else they will
+not be able to achieve the last fragment of the code. 
+- If the player inputs the correct code in the office's keypad, then the door will open and the game will be completed,
+else the door will remain locked and the player will stay stuck in the junkyard.
+- If the player manages to collect all the notes spread out across the junkyard, then they will be rewarded with knowing 
+what the code is, else they will have to figure it out on their own or through trial and error, increasing difficulty.
+
 
 ## Reflection on Programming Structure
 
@@ -190,3 +230,6 @@ Decoupling `PlayerMovement` (physics/animation) from `PlayerInteraction` (input/
 in `FixedUpdate()` never risked breaking pickup logic. The state machine served as the communication bridge, 
 ensuring these systems coordinated through formal state changes rather than direct references, improving maintainability 
 and reducing side effects.
+
+## Link to Playable Game
+https://i38waikiki.itch.io/the-lost-thread-proto?secret=T00Fg6DTDjSMy14LdFsgGFNPa0k
