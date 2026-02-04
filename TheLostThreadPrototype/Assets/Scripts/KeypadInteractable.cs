@@ -206,10 +206,10 @@ public void Interact(Transform interactor)
 
     private IEnumerator GameEnded()
     {
-        if (MusicManager.Instance != null)
+       /* if (MusicManager.Instance != null)
         {
             MusicManager.Instance.PlayEndingMusic();
-        }
+        }*/
         
         //animation trigger for fade in
         fadeAnimator.SetTrigger("fadeInAnim");
